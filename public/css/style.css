@@ -1,0 +1,38 @@
+/*body, html{
+	height: 100%;
+	border: 0;
+	
+}
+/*Index*/
+
+#searchBar{
+	text-align: center;
+	margin-top: 12%;
+}
+
+#searchBar h3{
+	color:gray;
+}
+
+
+.loginBTN{
+	width: 160px;
+	padding-left: 0px;
+	
+}
+
+/*profile*/
+
+#profileaccordion{
+    width: 600px;
+    margin: 0 auto;
+}
+
+#profileForm{
+/*    width: 600px;
+*/    margin: 0 auto;
+}
+
+.form-group{
+/*    padding-left: 100px;
+*/}

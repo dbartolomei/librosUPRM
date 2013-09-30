@@ -1,0 +1,51 @@
+script(src='js/books.js')
+
+#addTextBook.modal.fade
+	.modal-dialog
+		.modal-content
+			.modal-header
+				button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
+				h4.modal-title Add a new TextBook for sale
+			.modal-body
+				form.form-horizontal#profileForm.col-lg-offset-10
+					.form-group
+						label.col-lg-3.control-label(for='ISBN', name='ISBN') ISBN
+						.col-lg-6
+							input#ISBN.form-control(type='text', placeholder='ISBN', name='ISBN', required)
+						button.btn.disabled#isbnSearch(type='button') Search
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Title
+						.col-lg-6
+							input#bookTitle.form-control(type='text', placeholder='Book Title', name='title')
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Authors
+						.col-lg-6
+							input#authors.form-control(type='text', placeholder='authors', name='authors')
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='publisher', name='publisher') Publisher
+						.col-lg-6
+							input#publisher.form-control(type='text', placeholder='publisher', name='publisher')
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='publishedDate', name='publishedDate') Published Date
+						.col-lg-6
+							input#publishedDate.form-control(type='text', placeholder='publishedDate', name='publishedDate')
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='image', name='image') Image
+						.col-lg-3
+							#thumbnail
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='condition', name='condition') Condition
+						.col-lg-3
+							select.form-control#condition
+								option(val='1') As New
+								option(val='2') Good
+								option(val='3') Fair
+								option(val='4') Poor
+
+					.form-group.bookInfo.hide
+						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Your Price $
+						.col-lg-6
+							input#price.form-control(type='text', name='price', required, placeholder = '100.00')
+					.form-group.bookInfo.hide
+						.col-lg-11	
+							button#save.btn.btn-primary.pull-right Save

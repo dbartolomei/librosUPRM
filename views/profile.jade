@@ -1,0 +1,57 @@
+extends layout
+
+block script
+	//something goes here
+block content
+	include navbar
+	.container
+		#profileaccordion.accordion
+			.accordion-group
+				.accordion-heading
+					a.accordion-toggle#accordion1(data-toggle='collapse', data-parent='#accordion2', href='#collapseOne')
+						| My Information
+				#collapseOne.accordion-body.collapse
+					.accordion-inner
+						form.form-horizontal#profileForm.col-lg-offset-10(action='/saveProfile',method='post', name='profileUpdate', enctype="multipart/form-data")
+							.form-group
+								label.col-lg-3.control-label(for='name') Name
+								.col-lg-6
+									input#name.form-control(type='text', placeholder='name', name='name', value='#{user.name}' , required)
+							.form-group
+								label.col-lg-3.control-label(for='email') Email
+								.col-lg-6
+									input#email.form-control(type='email', placeholder='Email',name='email', value='#{user.email}' , required)
+							.form-group
+								label.col-lg-3.control-label(for='phone') Phone
+								.col-lg-4
+									input#phone.form-control(type='tel', placeholder='Phone', name='phone', value='#{user.phone}' )
+								.col-lg-2
+									button.btn.btn-primary(type='submit') Save
+			.accordion-group
+				.accordion-heading
+					a.accordion-toggle#accordion2(data-toggle='collapse', data-parent='#accordion2', href='#collapseTwo')
+						| My Books
+				#collapseTwo.accordion-body.collapse
+					.accordion-inner
+						table.table
+							each item in books
+								tr
+									td #{item.title}
+						a.btn.btn-success#add(data-toggle='modal', href='#addTextBook') Add TextBook
+						
+						include book
+
+		script.
+			$(document).ready(function(){
+				if($('#phone').val() === 'undefined')
+					$('#phone').val('');
+			})
+		script.
+			$(document).ready(function(){
+				if($('#email').val() != null){
+					$('#accordion2').click();
+				}
+				else		
+					$('#accordion1').click();
+			})
+

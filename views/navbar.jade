@@ -1,0 +1,23 @@
+.navbar.navbar-inverse
+	a.navbar-brand(href='/')
+		img(src='img/logo.png');
+	ul.nav.navbar-nav.pull-right
+		li
+			a(href='')
+				| HOW-TO: Sell Your Books!
+		li.divider-vertical
+		if !auth
+			li.dropdown
+				a.dropdown-toggle(href='#', data-toggle='dropdown')
+					| Sign In 
+					strong.caret
+					.dropdown-menu(style='padding: 15px; padding-bottom:15px;')
+						a.btn.btn-info.loginBTN(href="/auth/twitter") Twitter
+						br
+						a.btn.btn-primary.loginBTN(href="#") Facebook
+						br
+						a.btn.btn-danger.loginBTN(href="#") Google+
+						br
+		else
+			li
+				a(href='/profile') My Account
