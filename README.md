@@ -13,7 +13,7 @@ A proof of concept of a simple textbook-for-sale listing service. It start after
 * Books lookup using Google Books API
 * Create book listings
 
-###Pending Mudules
+###Pending Modules
 * Finish book search capabilities (p1)
 * Integrate login with Facebook (p3)
 * Develop single product view (p1)
