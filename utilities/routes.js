@@ -29,6 +29,14 @@ module.exports = function(app,express){
 	//GET request for twitter callback after auth
 	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/profile', failureRedirect: '/' }));
 
+
+	/*TWITTER AUTHENTICATION*/
+	//GET Request for facebook auth
+	app.get('/auth/facebook', passport.authenticate('facebook'));
+	//GET request for facebook callback after auth
+	app.get('/auth/facebook/callback', passport.authenticate('facebook'), { successRedirect: '/profile', failureRedirect: '/' }));
+
+
 	//logut GET request
 	app.get('/logout', function(req, res){ req.logOut(); res.redirect('/');})	
 }
