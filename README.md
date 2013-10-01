@@ -1,22 +1,24 @@
 ##General Information
-A proof of concept of a simple textbook sharing service. It start after seeing so many bulletin boards with advertisments that buyers doesn't know if are still available Looking to finish to the spring semester at test it at my campus.
+A proof of concept of a simple textbook-for-sale listing service. It start after seeing so many bulletin boards with paper ads of textbooks. This web app is trying to solve that buyers doesn't know if are still available Looking to finish to the spring semester at test it at my campus.
 
-###librosRUM? 
-* "libros" is the spanish form for Books
-* "RUM" is my campus name acronym (Recinto Universitario de Mayagüez)
 
 
 ###Stack
-
-* NodeJS (ExpressJS)
-* MongoDB
+* Node.js (Express.js)
+* MongoDB + Mongoose
 * Bootstrap 3
 
 ###Completed Modules
 * Twitter Login
-* Books lookup on Google Books API
-* Sellers are able to save books with their data and price
+* Books lookup using Google Books API
+* Create book listings
 
 ###Pending Mudules
-* Fimish book search capabilities
-* Integrate login with Facebook and Google+
+* Finish book search capabilities (p1)
+* Integrate login with Facebook (p3)
+* Develop single product view (p1)
+* Develop in-site messages (p2)
+
+
+
+
