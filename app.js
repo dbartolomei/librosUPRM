@@ -57,6 +57,7 @@ passport.use(new TwitterStrategy({
 	}
 ));
 
+//Facebook Passport Strategy
 passport.use(new FacebookStrategy({
 	clientID: config.facebook.id,
 	clientSecret: config.facebook.secret,
@@ -70,7 +71,7 @@ passport.use(new FacebookStrategy({
 			}
 			else{
 				var newUser = new db.Users({
-					provider: 'twitter',
+					provider: 'facebook',
 					username: profile.username,
 					name: profile.displayName,
 					providerID: profile.id,

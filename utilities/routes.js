@@ -30,7 +30,7 @@ module.exports = function(app,express){
 	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/profile', failureRedirect: '/' }));
 
 
-	/*TWITTER AUTHENTICATION*/
+	/*Facebook AUTHENTICATION*/
 	//GET Request for facebook auth
 	app.get('/auth/facebook', passport.authenticate('facebook'));
 	//GET request for facebook callback after auth
