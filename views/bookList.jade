@@ -5,12 +5,19 @@ block script
 block content
 	include navbar
 	.container
-		each book in data
-			img(src=book.obj.thumbnail)
-			p #{book.obj.title}
-			p #{book.obj.description}
-			p #{book.obj.condition}
-			p #{book.obj.price}
-			p #{book.obj.isbn10}
-			p #{book.obj.isbn13}
-			p #{book.obj.authors}
+		table.table.table-striped
+			thead
+				th Title 
+				th Condition 
+				th Price
+				th Authors
+			each book in data
+				tr
+					td
+						p #{book.obj.title}
+					td
+						p #{book.obj.condition}
+					td
+						p #{book.obj.price}
+					td
+						p #{book.obj.authors}
