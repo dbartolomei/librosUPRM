@@ -1,0 +1,16 @@
+extends layout
+
+block script
+	//something goes here
+block content
+	include navbar
+	.container
+		each book in data
+			img(src=book.obj.thumbnail)
+			p #{book.obj.title}
+			p #{book.obj.description}
+			p #{book.obj.condition}
+			p #{book.obj.price}
+			p #{book.obj.isbn10}
+			p #{book.obj.isbn13}
+			p #{book.obj.authors}

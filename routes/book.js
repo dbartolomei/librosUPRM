@@ -54,10 +54,14 @@ exports.newBook = function(req,res,next){
 //initial implementation for the search functionality. NEED MORE WORK
 
 exports.search = function(req,res,next){
+	var data = {"data" : ""}
 	db.Books.textSearch(req.body.query,function(err, output){
 		if(err) return handleError(err);
 		var inspect = require('util').inspect;
-		console.log(inspect(output, { depth: null }));
-		res.redirect('/');
+		//var data = inspect(output, { depth: null });
+		data.data = output.results;
+		console.log(data);
+
+		res.render('bookList',data);
 	})
 }
