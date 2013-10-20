@@ -34,7 +34,7 @@ module.exports = function(app,express){
 	//GET Request for facebook auth
 	app.get('/auth/facebook', passport.authenticate('facebook'));
 	//GET request for facebook callback after auth
-	app.get('/auth/facebook/callback', passport.authenticate('facebook'), { successRedirect: '/profile', failureRedirect: '/' }));
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/profile', failureRedirect: '/' }));
 
 
 	//logut GET request
