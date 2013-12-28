@@ -58,10 +58,34 @@ exports.search = function(req,res,next){
 	db.Books.textSearch(req.body.query,function(err, output){
 		if(err) return handleError(err);
 		var inspect = require('util').inspect;
-		//var data = inspect(output, { depth: null });
 		data.data = output.results;
+		data.auth = req.isAuthenticated();
+
 		console.log(data);
 
-		res.render('bookList',data);
+		res.render('book_search_list',data);
+	})
+}
+
+exports.index = function(req,res,next){
+	var data = {"data" : ""}
+	db.Books.find({},function(err, output){
+		if(err) return handleError(err);
+		// console.log(output);
+		
+		data.data = output;
+		data.auth = req.isAuthenticated();
+		
+		console.log(data);
+
+		res.render('book_list',data);
+	})
+}
+
+exports.delete = function(req,res,next){
+	console.log(req.body);
+	db.Books.findOneAndRemove({_id:req.body._id}, function(err,output){
+		console.log(output);
+		res.redirect('/account');
 	})
 }

@@ -57,4 +57,24 @@ $(document).ready(function(){
 			$('#isbnSearch').removeClass('disabled');
 		}
 	})
+
+	$('.remove_item').click(function(){
+		var _id = $(this).attr('_id');
+		console.log();
+
+		if(confirm("Are you sure you want to delete this Book?")){
+            $.ajax({
+                type: "POST",
+                url: "/book/delete",
+                data: {"_id":_id},
+                success: function(data){ 
+                	console.log(_id + 'deleted ' + data)
+                	$(this).parent().parent().remove();
+
+                }
+            });
+        }
+
+	})
 })
+

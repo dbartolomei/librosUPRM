@@ -1,38 +1,61 @@
-/*body, html{
-	height: 100%;
-	border: 0;
-	
+body{
+	font-family: Helvetica;
 }
-/*Index*/
-
 #searchBar{
 	text-align: center;
 	margin-top: 12%;
 }
 
+#searchBar h1{
+	font-family: Helvetica;
+	font-weight: bolder;
+	font-size: 90px;
+	color: #156112;
+	margin-bottom: 0px;
+}
+
 #searchBar h3{
-	color:gray;
+	color: #404040;
+	margin-top: 0px;
 }
 
 
 .loginBTN{
 	width: 160px;
-	padding-left: 0px;
-	
+	padding-left: 0px;	
 }
 
 /*profile*/
-
 #profileaccordion{
     width: 600px;
     margin: 0 auto;
 }
 
 #profileForm{
-/*    width: 600px;
-*/    margin: 0 auto;
+	margin: 0 auto;
 }
 
-.form-group{
-/*    padding-left: 100px;
-*/}
+#custom-search-form{
+	width: 30%;
+}
+
+#custom-search-form input{
+	width: 90%;
+	float: left;
+	box-shadow: none;
+}
+
+#custom-search-form button{
+	float: right;
+	background: none;
+	border: 1px #156112 solid;
+}
+
+#custom-search-form button:hover{
+	background-color: rgba(21,97,18,0.1);
+	color: #156112;
+}
+
+.navbar.navbar-inverse{
+	border-radius: none !important;
+}

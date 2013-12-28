@@ -13,10 +13,6 @@ passport.deserializeUser(function(id, done) {
 * Render the user profile
 */
 var profile = function(req, res, next){
-	// var auth = req.isAuthenticated();
-	// console.log(auth);
-	// var content = {'auth': auth};
-	
 	if(req.isAuthenticated()){
 		db.Users.findOne({_id: req.user._id}, function(err, user){
 			db.Books.find({userID: req.user._id}, function(err, books){
@@ -28,7 +24,6 @@ var profile = function(req, res, next){
 				console.log(data);
 				res.render('profile', data);
 			})
-			
 		})
 	}
 	else{

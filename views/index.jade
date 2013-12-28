@@ -5,16 +5,10 @@ block script
 block content
 	include navbar
 	
-	div#searchBar
-		img(src='/img/logo-main.png')
-		h3 Busca libros de texto por ISBN, título o autor
-		form#custom-search-form.form-search.form-horizontal(action='/search',method='post', name='search', enctype="multipart/form-data")
-			.input-append
-				.row
-				.col-lg-4
-				.col-lg-4
-					.col-lg-9
-						input.form-control.search-query(type='text', placeholder='Search', name='query')
-					.col-lg-1
-						button.btn(type='submit') go
-				.col-lg-4
+	#searchBar
+		h1 UPRMbooks
+		h3 Search for textbooks by ISBN, title o author
+		center
+			form#custom-search-form.form-search.form-horizontal(action='/search',method='post', name='search', enctype="multipart/form-data")
+				input.form-control.search-query(type='text', placeholder='Search', name='query', required)
+				button.btn(type='submit') go

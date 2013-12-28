@@ -7,12 +7,14 @@ module.exports = function(app,express){
 	var user = require('../routes/user');
 	var index = require('../routes/index');
 	var book = require('../routes/book');
-	
+	 
 
 	// GET requests for main view
 	app.get('/', index.index);
 	// GET request for user view
-	app.get('/profile', user.profile);
+	app.get('/account', user.profile);
+
+	app.get('/books',book.index);
 
 	// POST request for update user profile
 	app.post('/saveProfile',user.profileUpdate);
@@ -21,20 +23,23 @@ module.exports = function(app,express){
 	// POST request to search for books 
 	app.post('/search', book.search);
 
+	//DELETE a book especified by book_id
+	app.post('/book/delete', book.delete);
+
 
 
 	/*TWITTER AUTHENTICATION*/
 	//GET Request for twitter auth
 	app.get('/auth/twitter', passport.authenticate('twitter'));
 	//GET request for twitter callback after auth
-	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/profile', failureRedirect: '/' }));
+	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/account', failureRedirect: '/' }));
 
 
 	/*Facebook AUTHENTICATION*/
 	//GET Request for facebook auth
 	app.get('/auth/facebook', passport.authenticate('facebook'));
 	//GET request for facebook callback after auth
-	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/profile', failureRedirect: '/' }));
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/account', failureRedirect: '/' }));
 
 
 	//logut GET request

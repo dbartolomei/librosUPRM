@@ -37,9 +37,10 @@ block content
 							each item in books
 								tr
 									td #{item.title}
-						a.btn.btn-success#add(data-toggle='modal', href='#addTextBook') Add TextBook
-						
-						include book
+									td 
+										button(_id=item._id).remove_item x
+						a.btn.btn-success#add(data-toggle='modal', href='#addTextBook') Add TextBook	
+						include book_add
 
 		script.
 			$(document).ready(function(){
