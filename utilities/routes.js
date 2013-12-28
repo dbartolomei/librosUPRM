@@ -12,7 +12,7 @@ module.exports = function(app,express){
 	// GET requests for main view
 	app.get('/', index.index);
 	// GET request for user view
-	app.get('/account', user.profile);
+	app.get('/account', user.account);
 
 	app.get('/books',book.index);
 

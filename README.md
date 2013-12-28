@@ -8,17 +8,12 @@ A proof of concept of a simple textbook-for-sale listing service. It start after
 * MongoDB + Mongoose
 * Bootstrap 3
 
-###Completed Modules
-* Twitter Login
-* Books lookup using Google Books API
-* Create book listings
-
-###Pending Modules
-* Finish book search capabilities (p1)
-* Integrate login with Facebook (p3)
-* Develop single product view (p1)
-* Develop in-site messages (p2)
-
-
-
-
+### Tasks
+* ~~Twitter Login~~
+* ~~Books lookup using Google Books API~~
+* ~~Create book listings~~
+* ~~Search book listings~~
+* ~~Finish book search capabilities~~
+* Develop single product view
+* Mobile styling
+* Facebook Login
