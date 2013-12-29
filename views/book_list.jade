@@ -4,28 +4,34 @@ block script
 	//something goes here
 block content
 	include navbar
+
 	.container
-		table.table.table-striped
-			thead
-				th Title 
-				th Condition 
-				th Price
-				th Authors
-				th ISBN10
+		.accordion
 			each book in data
-				tr
-					td
-						p #{book.title}
-					td
-						p #{book.condition}
-					td
-						p $#{book.price}
-					td
-						p #{book.authors}
-					td
-						p #{book.isbn13}
-					td
-						a.btn.btn-primary#contact(data-toggle="modal", href='#contactSeller') Contact Seller 
+				.accordion-group
+					.accordion-heading
+						a.accordion-toggle(data-toggle='collapse', href="#"+book._id)
+							.row
+								.col-md-4
+									p #{book.title}
+								.col-sm-8
+									p $#{book.price}	
+					.accordion-body.collapse(id=book._id)
+						.accordion-inner
+							p Title: #{book.title}
+							p Condition: #{book.condition}
+							p Authors:  #{book.authors}
+							p ISBN 13: #{book.isbn13}
+							p ISBN 10: #{book.isbn10}
+							p Book Description: #{book.description}
+							p Owner Description: #{book.owner_description}
+
+							h3 Contact Information:
+							p name: #{book.userID.name}
+							p email: #{book.userID.email}
+							p phone: #{book.userID.phone}
+
+
 	#contactSeller.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
 		.modal-dialog
 			.modal-content

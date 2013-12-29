@@ -12,17 +12,16 @@ passport.deserializeUser(function(id, done) {
 /*
 * Render the user profile
 */
-var profile = function(req, res, next){
+exports.account = function(req, res, next){
 	if(req.isAuthenticated()){
 		db.Users.findOne({_id: req.user._id}, function(err, user){
 			db.Books.find({userID: req.user._id}, function(err, books){
 				var data = {};
 				data.user = user;
 				data.books = books;
-				// console.log(data);
 				data.auth = true;
 				console.log(data);
-				res.render('profile', data);
+				res.render('account', data);
 			})
 		})
 	}
@@ -48,8 +47,8 @@ exports.profileUpdate = function(req,res,next){
 						next();
 						res.json(400);
 					}
-				else
-					res.redirect('/profile')
+			
+					res.redirect('/account')
 			})
 		})
 	}
@@ -57,7 +56,7 @@ exports.profileUpdate = function(req,res,next){
 /*
 * Render the user settings page
 */
-var userData = function(req, res, next){
+exports.userData = function(req, res, next){
 	if(req.isAuthenticated()){
 		data = {
 			email : req.user.email,
@@ -72,41 +71,3 @@ var userData = function(req, res, next){
 	}		
 }
 
-/*
-* Render view to submit a new entry
-*/
-var newEntry = function(req, res, next){
-	if(req.isAuthenticated()){
-		if(req.user.email === ""){
-			res.redirect('/perfil');
-		}
-		else{
-		var currentFile = {};
-		currentFile.authentification = true;
-		res.render('newEntry', currentFile);
-		}
-	}
-	else{
-		req.session.returnTo = req.route.path;
-		res.redirect('/entrar');
-	}
-}
-
-/*
-* Render the sign in view
-*/
-var signIn = function(req,res){
-	if(req.isAuthenticated()){
-		res.redirect('/galeria');
-	}
-	else{
-		res.render('signin');
-	}
-}
-
-
-//Export Functions
-exports.newEntry = newEntry;
-exports.signIn = signIn;
-exports.profile = profile;
-exports.userData = userData;

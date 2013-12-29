@@ -38,7 +38,7 @@ block content
 								tr
 									td #{item.title}
 									td 
-										button(_id=item._id).remove_item x
+										a(_id=item._id).remove_item x
 						a.btn.btn-success#add(data-toggle='modal', href='#addTextBook') Add TextBook	
 						include book_add
 

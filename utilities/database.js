@@ -2,6 +2,7 @@
 var mongoose = require('mongoose');
 var config = require('./config');
 var textSearch = require('mongoose-text-search');
+var Schema = mongoose.Schema;
 
 //Connect to the database using the configuration url
 mongoose.connect(config.databaseURL);
@@ -36,10 +37,11 @@ var bookSchema = new mongoose.Schema({
 	tags : [String],
 	thumbnail : String,
 	smallThumbnail: String,
-	userID: String,
+	userID: { type: Schema.Types.ObjectId, ref: 'Users' },
 	created: Date,
 	isbn10: Number,
-	isbn13: Number
+	isbn13: Number,
+	owner_description: String
 });
 
 bookSchema.plugin(textSearch);

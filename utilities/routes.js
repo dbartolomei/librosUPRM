@@ -9,38 +9,25 @@ module.exports = function(app,express){
 	var book = require('../routes/book');
 	 
 
-	// GET requests for main view
-	app.get('/', index.index);
-	// GET request for user view
-	app.get('/account', user.account);
+	app.get('/', index.index);						// GET main view
+	app.get('/account', user.account);				// GET user view
+	app.get('/books',book.index);					// GET all listed books
 
-	app.get('/books',book.index);
-
-	// POST request for update user profile
-	app.post('/saveProfile',user.profileUpdate);
-	// POST request to create a new book
-	app.post('/newBook', book.newBook);
-	// POST request to search for books 
-	app.post('/search', book.search);
-
-	//DELETE a book especified by book_id
-	app.post('/book/delete', book.delete);
-
+	
+	app.post('/saveProfile',user.profileUpdate);	// POST update user profile	
+	app.post('/newBook', book.newBook);				// POST a new book			
+	app.post('/search', book.search);				// POST (search) for books 
+	
+	app.post('/book/delete', book.delete);			//DELETE a book especified by book_id
 
 
 	/*TWITTER AUTHENTICATION*/
-	//GET Request for twitter auth
-	app.get('/auth/twitter', passport.authenticate('twitter'));
-	//GET request for twitter callback after auth
-	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/account', failureRedirect: '/' }));
+	app.get('/auth/twitter', passport.authenticate('twitter'));  //GET Request for twitter auth
+	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/account', failureRedirect: '/' })); //callback
 
-
-	/*Facebook AUTHENTICATION*/
-	//GET Request for facebook auth
-	app.get('/auth/facebook', passport.authenticate('facebook'));
-	//GET request for facebook callback after auth
-	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/account', failureRedirect: '/' }));
-
+	/*FACEBOOK AUTHENTICATION*/
+	app.get('/auth/facebook', passport.authenticate('facebook')); 	//GET Request for facebook auth
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/account', failureRedirect: '/' })); 	//GET Request for facebook auth
 
 	//logut GET request
 	app.get('/logout', function(req, res){ req.logOut(); res.redirect('/');})	

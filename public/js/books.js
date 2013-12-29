@@ -7,8 +7,8 @@ $(document).ready(function(){
 
 	$('#isbnSearch').click(function(){
 		$('#thumb').remove();
-		var isbn = $('#ISBN').val();
-		var title;
+		var isbn = $('#ISBN').val();		
+		var title; 
 		var authors;
 		var publisher;
 		var publishedDate;
@@ -33,7 +33,7 @@ $(document).ready(function(){
 				bookdata.isbn13 = data.items[0].volumeInfo.industryIdentifiers[1].identifier;
 				bookdata.smallthumbnail = data.items[0].volumeInfo.imageLinks.smallThumbnail;
 				bookdata.thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
-
+				bookdata.owner_description = owner_description;
 				$('#bookTitle').val(bookdata.title);
 				$('#authors').val(bookdata.authors);
 				$('#publisher').val(bookdata.publisher);
@@ -43,11 +43,13 @@ $(document).ready(function(){
 			}
 		})
 		$('#save').click(function(){
-			bookdata.price = $('#price').val();
+			bookdata.price  = $('#price').val();
 			bookdata.condition = $('#condition').val();
+			bookdata.owner_description = $('#owner_description').val();
+
 
 			$.post('/newBook', bookdata).done(function(data){
-				alert('uh ah'+data);
+				// alert('uh ah'+data);
 			});
 		})
 	})

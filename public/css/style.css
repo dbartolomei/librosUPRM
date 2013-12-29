@@ -56,6 +56,10 @@ body{
 	color: #156112;
 }
 
-.navbar.navbar-inverse{
-	border-radius: none !important;
+.navbar{
+	border-radius: 0px;
+}
+
+.remove_item{
+	cursor:pointer;
 }

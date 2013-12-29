@@ -1,5 +1,6 @@
 var db = require('../utilities/database');
 var passport = require('passport');
+var async = require('async');
 
 // Function to deserialize passport users 
 passport.deserializeUser(function(id, done) {
@@ -11,10 +12,10 @@ passport.deserializeUser(function(id, done) {
 // reate a new book
 exports.newBook = function(req,res,next){
 	// dummy data: 0136114997
-
+	console.log('Just added a new book');
+	console.log(req.body);
 	if(req.isAuthenticated()){ //añadir condición para verificar USERID
-		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
-			console.log(tempTags);
+		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){  //Añadir condición para identificar que el duplicado es bajo un solo user
 			if(book === null){
 				var tempTags = [];
 					tempTags.push(req.body.title);
@@ -24,6 +25,7 @@ exports.newBook = function(req,res,next){
 					for(var i = 0; i < req.body.authors.length; i++){
 						tempTags = tempTags.concat(req.body.authors[i].split(' '));
 					}
+					
 					tempTags.push(req.body.isbn10);
 					tempTags.push(req.body.isbn13);
 
@@ -39,7 +41,8 @@ exports.newBook = function(req,res,next){
 					created: Date.now(),
 					isbn10: req.body.isbn10,
 					isbn13: req.body.isbn13,
-					tags : tempTags
+					tags : tempTags,
+					owner_description: req.body.owner_description
 				}).save(function(err, newBook){
 					if(err) console.log(err);
 				})
@@ -69,15 +72,10 @@ exports.search = function(req,res,next){
 
 exports.index = function(req,res,next){
 	var data = {"data" : ""}
-	db.Books.find({},function(err, output){
-		if(err) return handleError(err);
-		// console.log(output);
-		
-		data.data = output;
-		data.auth = req.isAuthenticated();
-		
-		console.log(data);
-
+	
+	db.Books.find({}).populate('userID').exec(function(err,books){
+		console.log(books);
+		data.data = books;
 		res.render('book_list',data);
 	})
 }
