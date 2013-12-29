@@ -1,11 +1,16 @@
 extends layout
 
 block script
-	//something goes here
+
 block content
 	include navbar
 
 	.container
+		script.
+			$(function(){
+				$('.created').text(moment($('#created')).fromNow());
+				console.log($('.created').val());
+			})
 		.accordion
 			each book in data
 				.accordion-group
@@ -14,8 +19,10 @@ block content
 							.row
 								.col-md-4
 									p #{book.title}
-								.col-sm-8
-									p $#{book.price}	
+								.col-sm-4
+									p $#{book.price}
+								.col-sm-4
+									p.created #{book.created}
 					.accordion-body.collapse(id=book._id)
 						.accordion-inner
 							p Title: #{book.title}

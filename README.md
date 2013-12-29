@@ -5,8 +5,8 @@ A proof of concept of a simple textbook-for-sale listing service. It start after
 
 ###Stack
 * Node.js (Express.js)
-* MongoDB + Mongoose
-* Bootstrap 3
+* MongoDB + Mongoose 3.8
+* Bootstrap 3.0.3
 
 ### Tasks
 * ~~Twitter Login~~
