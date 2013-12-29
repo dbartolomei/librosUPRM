@@ -15,9 +15,9 @@ module.exports = function(app,express){
 
 	
 	app.post('/saveProfile',user.profileUpdate);	// POST update user profile	
-	app.post('/newBook', book.newBook);				// POST a new book			
 	app.post('/search', book.search);				// POST (search) for books 
 	
+	app.post('/book/new', book.newBook);				// POST a new book			
 	app.post('/book/delete', book.delete);			//DELETE a book especified by book_id
 
 

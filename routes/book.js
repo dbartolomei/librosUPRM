@@ -34,7 +34,7 @@ exports.newBook = function(req,res,next){
 					authors: req.body.authors,
 					description: req.body.description, 
 					condition :req.body.condition,
-					price : req.body.price,
+					price : Number(req.body.price.replace(/[^0-9\.]+/g,"")),
 					thumbnail : req.body.thumbnail,
 					smallthumbnail : req.body.smallthumbnail,
 					userID: req.user._id,
@@ -48,7 +48,7 @@ exports.newBook = function(req,res,next){
 				})
 			}
 			else{
-				console.log('duplicated');
+				res.send(409)
 			}
 		})
 	}
@@ -76,6 +76,7 @@ exports.index = function(req,res,next){
 	db.Books.find({}).populate('userID').exec(function(err,books){
 		console.log(books);
 		data.data = books;
+		data.auth = req.isAuthenticated();
 		res.render('book_list',data);
 	})
 }
@@ -84,6 +85,6 @@ exports.delete = function(req,res,next){
 	console.log(req.body);
 	db.Books.findOneAndRemove({_id:req.body._id}, function(err,output){
 		console.log(output);
-		res.redirect('/account');
+		res.send(200);
 	})
 }

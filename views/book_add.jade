@@ -16,19 +16,19 @@ script(src='js/books.js')
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Title
 						.col-lg-6
-							input#bookTitle.form-control(type='text', placeholder='Book Title', name='title')
+							input#bookTitle.form-control(type='text', placeholder='Book Title', name='title', readonly="readonly")
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Authors
 						.col-lg-6
-							input#authors.form-control(type='text', placeholder='authors', name='authors')
+							input#authors.form-control(type='text', placeholder='authors', name='authors', readonly="readonly")
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='publisher', name='publisher') Publisher
 						.col-lg-6
-							input#publisher.form-control(type='text', placeholder='publisher', name='publisher')
+							input#publisher.form-control(type='text', placeholder='publisher', name='publisher', readonly="readonly")
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='publishedDate', name='publishedDate') Published Date
 						.col-lg-6
-							input#publishedDate.form-control(type='text', placeholder='publishedDate', name='publishedDate')
+							input#publishedDate.form-control(type='text', placeholder='publishedDate', name='publishedDate', readonly="readonly")
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='publisher', name='publisher') Description
 						.col-lg-6
@@ -38,7 +38,7 @@ script(src='js/books.js')
 						.col-lg-3
 							#thumbnail
 					.form-group.bookInfo.hide
-						label.col-lg-3.control-label(for='condition', name='condition') Condition
+						label.col-lg-3.control-label(for='condition', name='condition', readonly="readonly") Condition
 						.col-lg-3
 							select.form-control#condition
 								option(val='1') As New

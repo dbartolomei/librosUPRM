@@ -27,9 +27,22 @@ body{
 
 /*profile*/
 #profileaccordion{
-    width: 600px;
+    max-width: 600px;
     margin: 0 auto;
 }
+
+#profileaccordion #collapseTwo .panel-body p a{
+	float: right;
+}
+
+#profileaccordion #add{
+	float: right;
+	display: block;
+	/*background: green;*/
+	margin-top: -9px;
+	color: #fff;
+}
+
 
 #profileForm{
 	margin: 0 auto;
@@ -62,4 +75,17 @@ body{
 
 .remove_item{
 	cursor:pointer;
+}
+
+.panel-body p{
+	padding-left: 15px;
+}
+
+.panel-body img{
+	padding-bottom: 20px;
+	max-width: 300px;
+}
+
+.accordion-toggle p{
+	margin-bottom: 0px;
 }

@@ -46,13 +46,31 @@ $(document).ready(function(){
 			bookdata.price  = $('#price').val();
 			bookdata.condition = $('#condition').val();
 			bookdata.owner_description = $('#owner_description').val();
+			// $.post('/newBook', bookdata)
+			// .done(function(data, textStatus){
+			// 	console.log('new book added');
+			// 	console.log(textStatus);
+			// }).fail(function(data, textStatus){
+			// 	console.log('error');
+			// 	console.log(textStatus);
+			// })
 
+			$.ajax({
+				url: "/book/new",
+				type: "POST",
+				data: bookdata,
+				success: function(data, textStatus, jqXHR){
+					console.log(textStatus + ' saved: '+ data);
+				},
+				error: function(data, textStatus, jqXHR){
+					console.log(textStatus);
+				}
 
-			$.post('/newBook', bookdata).done(function(data){
-				// alert('uh ah'+data);
-			});
+			})
 		})
 	})
+
+//document.location.href='/account/';
 
 	$('#ISBN').change(function(){
 		if($(this).val().length >= 10){
@@ -70,8 +88,9 @@ $(document).ready(function(){
                 url: "/book/delete",
                 data: {"_id":_id},
                 success: function(data){ 
-                	console.log(_id + 'deleted ' + data)
-                	$(this).parent().parent().remove();
+                	console.log(_id + ' deleted ' + data);
+                	// console.log($(this).parent());
+                	$("#"+_id).remove();
 
                 }
             });

@@ -8,35 +8,63 @@ block content
 	.container
 		script.
 			$(function(){
-				$('.created').text(moment($('#created')).fromNow());
-				console.log($('.created').val());
-			})
-		.accordion
+				$('.created').each(function(){
+					$(this).text(moment(Date.parse($(this).text())).fromNow());
+				});
+			});
+
+		.panel-group#accordion
 			each book in data
-				.accordion-group
-					.accordion-heading
-						a.accordion-toggle(data-toggle='collapse', href="#"+book._id)
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.accordion-toggle(data-toggle='collapse',data-parent="#accordion", href="#"+book._id)
+								.row
+									.col-sm-8
+										p #{book.title}
+									.col-sm-2
+										p $#{book.price}
+									.col-sm-2
+										p.created #{book.created}
+					.panel-collapse.collapse(id=book._id)
+						.panel-body
 							.row
 								.col-md-4
-									p #{book.title}
-								.col-sm-4
-									p $#{book.price}
-								.col-sm-4
-									p.created #{book.created}
-					.accordion-body.collapse(id=book._id)
-						.accordion-inner
-							p Title: #{book.title}
-							p Condition: #{book.condition}
-							p Authors:  #{book.authors}
-							p ISBN 13: #{book.isbn13}
-							p ISBN 10: #{book.isbn10}
-							p Book Description: #{book.description}
-							p Owner Description: #{book.owner_description}
+									h4 Book Information: 
+									p 
+										b Title: 
+										| #{book.title}
+									p 
+										b Condition: 
+										| #{book.condition}
+									p 
+										b Authors:  
+										| #{book.authors}
+									p 
+										b ISBN 13:
+										| #{book.isbn13}
+									p 
+										b ISBN 10: 
+										| #{book.isbn10}
+								.col-md-2
+									img(width='100%', src=book.thumbnail)
+							p 
+								b Book Description: 
+								| #{book.description}
+							p 
+								b Owner Description: 
+								| #{book.owner_description}
 
-							h3 Contact Information:
-							p name: #{book.userID.name}
-							p email: #{book.userID.email}
-							p phone: #{book.userID.phone}
+							h4 Contact Information:
+							p 
+								b name: 
+								| #{book.userID.name}
+							p 
+								b email: 
+								a(href='mailto:'+ book.userID.email) #{book.userID.email}
+							p 
+								b phone: 
+								a(href='tel:'+ book.userID.phone) #{book.userID.phone}
 
 
 	#contactSeller.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
