@@ -59,11 +59,17 @@ $(document).ready(function(){
 				url: "/book/new",
 				type: "POST",
 				data: bookdata,
-				success: function(data, textStatus, jqXHR){
-					console.log(textStatus + ' saved: '+ data);
+				success: function(){
+					// console.log(textStatus + ' saved: '+ data);
+					console.log('whugu');
 				},
-				error: function(data, textStatus, jqXHR){
-					console.log(textStatus);
+				error: function(){
+					// console.log(textStatus);
+				},
+				statusCode:{
+					409: function(){
+						alert('duplicated book motherfucker');
+					}
 				}
 
 			})

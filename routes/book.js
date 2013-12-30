@@ -48,7 +48,7 @@ exports.newBook = function(req,res,next){
 				})
 			}
 			else{
-				res.send(409)
+				res.send(409, "Duplicated Book");
 			}
 		})
 	}
