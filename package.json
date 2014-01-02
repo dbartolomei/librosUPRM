@@ -20,7 +20,9 @@
     "jsdom":"0.6.5",
     "connect-ensure-login" : "*",
     "sendgrid":"0.2.7",
-    "mongoose-text-search":"*"
+    "mongoose-text-search":"*",
+    "redis":"0.10.0",
+    "connect-redis":"1.4.6"
   },
     "engines": {
     "node": "0.10.8",

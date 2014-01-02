@@ -7,7 +7,12 @@ var path = require('path');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-
+var RedisStore = require('connect-redis')(express);
+var redisClient = require('redis').createClient(config.redis.port, config.redis.host);
+  	redisClient.auth(config.redis.password, function(err) {
+  		if(err) console.log(err);
+    	console.log('Redis client connected');
+  	});
 
 // Import configurations data
 var config = require('./utilities/config');
@@ -102,7 +107,7 @@ app.configure(function(){
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
-	app.use(express.session({ secret: config.secret}));
+	app.use(express.session({ secret: config.secret, cookie: {maxAge: 12960000000}, store: new RedisStore({client:redisClient})}));
 	app.use(express.methodOverride());
 	app.use(passport.initialize());
 	app.use(passport.session());
