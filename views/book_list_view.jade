@@ -1,0 +1,57 @@
+script.
+		$(function(){
+			$('.created').each(function(){
+				$(this).text(moment(Date.parse($(this).text())).fromNow());
+			});
+		});
+each book in data
+				.panel.panel-default
+					.panel-heading
+						h4.panel-title
+							a.accordion-toggle(data-toggle='collapse',data-parent="#accordion", href="#"+book._id)
+								.row
+									.col-sm-8
+										p #{book.title}
+									.col-sm-2
+										p $#{book.price}
+									.col-sm-2
+										p.created #{book.created}
+					.panel-collapse.collapse(id=book._id)
+						.panel-body
+							.row
+								.col-md-4
+									h4 Book Information: 
+									p 
+										b Title: 
+										| #{book.title}
+									p 
+										b Condition: 
+										| #{book.condition}
+									p 
+										b Authors:  
+										| #{book.authors}
+									p 
+										b ISBN 13:
+										| #{book.isbn13}
+									p 
+										b ISBN 10: 
+										| #{book.isbn10}
+								.col-md-2
+									img(width='100%', src=book.thumbnail)
+							p 
+								b Book Description: 
+								| #{book.description}
+							p 
+								b Owner Description: 
+								| #{book.owner_description}
+
+							h4 Contact Information:
+							p 
+								b name: 
+								| #{book.userID.name}
+							p 
+								b email: 
+								a(href='mailto:'+ book.userID.email) #{book.userID.email}
+							p 
+								b phone: 
+								a(href='tel:'+ book.userID.phone) #{book.userID.phone}

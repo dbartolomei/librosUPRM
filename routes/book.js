@@ -9,7 +9,7 @@ passport.deserializeUser(function(id, done) {
   }); 
 });
 
-// reate a new book
+// create a new book
 exports.newBook = function(req,res,next){
 	// dummy data: 0136114997
 	console.log('Just added a new book');
@@ -59,6 +59,7 @@ exports.newBook = function(req,res,next){
 exports.search = function(req,res,next){
 	var data = {"data" : ""}
 	db.Books.textSearch(req.body.query,function(err, output){
+		// output.populate('userID');
 		if(err) return handleError(err);
 		var inspect = require('util').inspect;
 		data.data = output.results;
