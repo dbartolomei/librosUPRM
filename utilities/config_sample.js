@@ -4,19 +4,27 @@
 */
 
 /* Database setup*/
-exports.databaseURL = '[MONGODB URL]';
+exports.databaseURL = 'MONGODB_URL';
 
 /* Session secret*/
-exports.secret = '[SECRET SECRET]';
+exports.secret = 'SECRET_SECRET';
 
 /* Twitter credentials. */
 exports.twitter = {
-	key:"[TWITTER KEY]",
-	secret:"[TWITTER SECRET]"
+	key:"TWITTER_KEY",
+	secret:"TWITTER_SECRET"
 };
 
 /*Facebook credentials. */
 exports.facebook = {
-	id:"[FACEBOOKID",
-	secret:"[FACEBOOKSECRET]"
+	id:" FACEBOOK_ID",
+	secret:"FACEBOOK_SECRET"
 };
+
+
+
+exports.redis = {
+	host: "HOST",
+	port:"PORT",
+	password: "PASSWORD"
+}

@@ -1,28 +1,31 @@
 .navbar.navbar-inverse
-	.container
-		a.navbar-brand(href='/')
-			| UPRMbooks
-		ul.nav.navbar-nav.pull-right
-			li
-				a(href='')
-					| HOW-TO: Sell Your Books!
-			li.divider-vertical
-			if !auth
-				li.dropdown
-					a.dropdown-toggle(href='#', data-toggle='dropdown')
-						| Sign In 
-						strong.caret
-						.dropdown-menu(style='padding: 15px; padding-bottom:15px;')
-							a.btn.btn-info.loginBTN(href="/auth/twitter") Twitter
-							br
-							a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
-							br
-							a.btn.btn-danger.loginBTN(href="#") Google+
-							br
-			else
-				li
-					a#add(data-toggle='modal', href='#addTextBook') + Book	
-				li
-					a(href='/account') My Account
+    .container
+      a.navbar-brand(href='/')
+        | UPRMbooks
+      ul.nav.navbar-nav.pull-right                    
+        li.divider-vertical
+        if !auth
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+              | Sign In 
+              strong.caret
+              .dropdown-menu(style='padding: 15px; padding-bottom:15px;')
+                a.btn.btn-info.loginBTN(href="/auth/twitter") Twitter
+                br
+                a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
+                br
+                br
+        else
+          li
+            a#add(data-toggle='modal', href='#addTextBook') + Book  
+          li
+            a(href='/account') My Account
+      .col-sm-3.col-md-3.pull-right
+        form.navbar-form(role='search', action='/search', method='post')
+          .input-group
+            input#srch-term.form-control(type='text', placeholder='Search', name='srch-term')
+            .input-group-btn
+              button.btn.btn-default(type='submit')
+                i.glyphicon.glyphicon-search
 
-				include book_add
+      include book_add

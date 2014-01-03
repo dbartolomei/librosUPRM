@@ -108,6 +108,7 @@ app.configure(function(){
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
 	app.use(express.session({ secret: config.secret, cookie: {maxAge: 12960000000}, store: new RedisStore({client:redisClient})}));
+	// app.use(express.session({ secret: config.secret, cookie: {maxAge: 12960000000} }));
 	app.use(express.methodOverride());
 	app.use(passport.initialize());
 	app.use(passport.session());

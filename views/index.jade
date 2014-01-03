@@ -9,6 +9,6 @@ block content
 		h1 UPRMbooks
 		h3 Search for textbooks by ISBN, title o author
 		center
-			form#custom-search-form.form-search.form-horizontal(action='/search',method='post', name='search', enctype="multipart/form-data")
+			form#custom-search-form.form-search.form-horizontal(action='/search', method='post', name='search', enctype="multipart/form-data")
 				input.form-control.search-query(type='text', placeholder='Search', name='query', required)
 				button.btn(type='submit') go
