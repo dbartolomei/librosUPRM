@@ -65,18 +65,18 @@ exports.search = function(req,res,next){ //req.body.query
 		var inspect = require('util').inspect;
 
 		var send = false;
-		
+		var q_ctr = 0;
 		for(var i = 0; i < output.results.length ;i++){
 			var book = {'book': output.results[i].obj, 'user': '' }
 			db.Users.findById(output.results[i].obj.userID).exec(function(err,user){
+				q_ctr++;
 				book.user = user;
 				data.data.push(book);
-				// console.log(i == output.results.length);
+				console.log(q_ctr);
+				if(q_ctr == output.results.length){
+					res.send(data);
+				}
 			})
-			console.log(i == output.results.length -1);
-			if(i == output.results.length -1){
-				res.send(data);
-			}
 		}
 		
 	})
