@@ -40,10 +40,18 @@ block content
 
 					#collapseTwo.panel-collapse.collapse
 						.panel-body
+							table.table.table-striped
 								each item in books
+									-var facebookLink = 'http://www.facebook.com/sharer.php?s=100&p[title]='+item.title+' - $'+item.price+'&p[summary]='+item.description+'&p[url]=http://uprmbooks.com/book/'+item._id+'&p[images][0]='+item.thumbnail
 									div(id=item._id)
-										p #{item.title}
-											a(_id=item._id).remove_item x
+										tr
+											td
+												a(href=facebookLink, target="_blank", onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')")
+													img(src="/img/share.png")
+											td
+												p #{item.title}
+											td
+												a(_id=item._id).btn.btn-danger.remove_item delete
 						
 							
 		script.

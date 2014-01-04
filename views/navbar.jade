@@ -20,12 +20,13 @@
             a#add(data-toggle='modal', href='#addTextBook') + Book  
           li
             a(href='/account') My Account
-      .col-sm-3.col-md-3.pull-right
+      .col-sm-3.col-md-3.pull-right#navbar_search
         form.navbar-form(action='/search', method='post', name='search', enctype="multipart/form-data")
           .input-group
-            input#srch-term.form-control(type='text', placeholder='Search', name='srch-term')
+            input#srch-term.form-control(type='text', placeholder='Search', name='query', required)
             .input-group-btn
               button.btn.btn-default(type='submit')
                 i.glyphicon.glyphicon-search
+
 
       include book_add

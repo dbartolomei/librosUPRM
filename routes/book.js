@@ -56,25 +56,25 @@ exports.newBook = function(req,res,next){
 
 //initial implementation for the search functionality. NEED MORE WORK
 
-exports.search = function(req,res,next){ //req.body.query
-	db.Books.textSearch('electric',function(err, output){
+exports.search = function(req,res,next){ //
+	db.Books.textSearch(req.body.query,function(err, output){
 		var data = {'data':[]};
 			data.auth = req.isAuthenticated();
 
 		if(err) return handleError(err);
 		var inspect = require('util').inspect;
 
-		var send = false;
 		var q_ctr = 0;
+		
 		for(var i = 0; i < output.results.length ;i++){
-			var book = {'book': output.results[i].obj, 'user': '' }
 			db.Users.findById(output.results[i].obj.userID).exec(function(err,user){
+				var book = {'book': output.results[q_ctr].obj, 'user': '' }
 				q_ctr++;
 				book.user = user;
 				data.data.push(book);
 				console.log(q_ctr);
 				if(q_ctr == output.results.length){
-					res.send(data);
+					res.render('book_search_list', data);
 				}
 			})
 		}

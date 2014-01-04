@@ -1,38 +1,64 @@
 extends layout
 
 block script
-        //something goes here
+
 block content
-        include navbar
-        .container
-                table.table.table-striped
-                        thead
-                                th Title 
-                                th Condition 
-                                th Price
-                                th Authors
-                        each book in data
-                                tr
-                                        td
-                                                p #{book.obj.title}
-                                        td
-                                                p #{book.obj.condition}
-                                        td
-                                                p $#{book.obj.price}
-                                        td
-                                                p #{book.obj.authors}
-                                        td
-                                                p #{book.obj.isbn13}
-                                        td
-                                                a.btn.btn-primary#contact(data-toggle="modal", href='#contactSeller') Contact Seller 
-        #contactSeller.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-                .modal-dialog
-                        .modal-content
-                                .modal-header
-                                        button.close(type='button', data-dismiss='modal', aria-hidden='true') ×
-                                        h4.modal-title Contact Seller
-                                .modal-body
-                                        p Please write a message to send for this sellers book.
-                                        textarea.form-control(rows='8')
-                                .modal-footer
-                                        button.btn.btn-primary(type='button') Send Message
+  include navbar
+    script.
+      $(function(){
+        $('.created').each(function(){
+          $(this).text(moment(Date.parse($(this).text())).fromNow());
+        });
+      });
+  .container
+    each item in data
+      .panel.panel-default
+        .panel-heading
+          h4.panel-title
+            a.accordion-toggle(data-toggle='collapse',data-parent="#accordion", href="#"+item.book._id)
+              .row
+                .col-sm-8
+                  p #{item.book.title}
+                .col-sm-2
+                  p $#{item.book.price}
+                .col-sm-2
+                  p.created #{item.book.created}
+        .panel-collapse.collapse(id=item.book._id)
+          .panel-body
+            .row
+              .col-md-4
+                h4 Book Information: 
+                p 
+                  b Title: 
+                  | #{item.book.title}
+                p 
+                  b Condition: 
+                  | #{item.book.condition}
+                p 
+                  b Authors:  
+                  | #{item.book.authors}
+                p 
+                  b ISBN 13:
+                  | #{item.book.isbn13}
+                p 
+                  b ISBN 10: 
+                  | #{item.book.isbn10}
+              .col-md-2
+                img(width='100%', src=item.book.thumbnail)
+            p 
+              b Book Description: 
+              | #{item.book.description}
+            p 
+              b Owner Description: 
+              | #{item.book.owner_description}
+
+            h4 Contact Information:
+            p 
+              b name: 
+              | #{item.user.name}
+            p 
+              b email: 
+              a(href='mailto:'+ item.user.email) #{item.user.email}
+            p 
+              b phone: 
+              a(href='tel:'+ item.user.phone) #{item.user.phone}
