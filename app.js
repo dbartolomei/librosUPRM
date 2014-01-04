@@ -68,7 +68,7 @@ passport.use(new FacebookStrategy({
 	clientSecret: process.env.FACEBOOK_SECRET,
 	callbackURL: "/auth/facebook/callback"
 	},
-	function(accessToken, refreshToken, profile, done){
+	function(token, refreshToken, profile, done){
 		db.Users.findOne({customID: 'facebook:' + profile.id}, function(err, user){
 			console.log(user);
 			if(user){
