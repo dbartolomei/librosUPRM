@@ -18,10 +18,10 @@ db.once('open', function callback () {
 var userSchema = new mongoose.Schema({
 	provider: String,
 	username: String,
-	providerID: String,
+	provider_id: String,
 	name: String,
 	oauthToken: String,
-	created: String,
+    created: { type: Date, default: Date.now },
 	email: String,
 	phone : Number,
 	banned : Boolean
