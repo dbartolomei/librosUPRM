@@ -1,10 +1,9 @@
 //Database configuration
 var mongoose = require('mongoose');
-var config = require('./config');
 var textSearch = require('mongoose-text-search');
 var Schema = mongoose.Schema;
 
-mongoose.connect(config.databaseURL);
+mongoose.connect(process.env.DB_URL);
 
 
 var db = mongoose.connection;

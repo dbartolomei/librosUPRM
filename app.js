@@ -8,11 +8,10 @@ var path = require('path');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
-var config = require('./utilities/config');
 var db = require('./utilities/database');
 var RedisStore = require('connect-redis')(express);
-var redisClient = require('redis').createClient(config.redis.port, config.redis.host);
-  	redisClient.auth(config.redis.password, function(err) {
+var redisClient = require('redis').createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
+  	redisClient.auth(process.env.REDIS_PASSWORD, function(err) {
   		if(err) console.log(err);
     	console.log('Redis client connected');
   	});
@@ -34,8 +33,8 @@ passport.deserializeUser(function(id, done){
 
 //Twitter Strategy
 passport.use(new TwitterStrategy({
-	consumerKey: config.twitter.key,
-	consumerSecret: config.twitter.secret,
+	consumerKey: process.env.TWITTER_KEY,
+	consumerSecret: process.env.TWITTER_SECRET,
 	callbackURL:"/auth/twitter/callback",
 	},
 	function(token, tokenSecret, profile, done){
@@ -64,36 +63,36 @@ passport.use(new TwitterStrategy({
 ));
 
 //Facebook Passport Strategy
-passport.use(new FacebookStrategy({
-	clientID: config.facebook.id,
-	clientSecret: config.facebook.secret,
-	callbackURL: "/auth/facebook/callback"
-	},
-	function(accessToken, refreshToken, profile, done){
-		db.Users.findOne({customID: 'facebook:' + profile.id}, function(err, user){
-			console.log(user);
-			if(user){
-				done(null,user);
-			}
-			else{
-				var newUser = new db.Users({
-					provider: 'facebook',
-					username: profile.username,
-					name: profile.displayName,
-					providerID: profile.id,
-					oauthToken: token,
-					created: Date.now(),
-					email : "",
-					phone: "",
-					banned: false
-				}).save(function (err, newUser){
-					if(err) console.log(err);
-					done(null, newUser);
-				});
-			}
-		});
-	}
-));
+// passport.use(new FacebookStrategy({
+// 	clientID: config.facebook.id,
+// 	clientSecret: config.facebook.secret,
+// 	callbackURL: "/auth/facebook/callback"
+// 	},
+// 	function(accessToken, refreshToken, profile, done){
+// 		db.Users.findOne({customID: 'facebook:' + profile.id}, function(err, user){
+// 			console.log(user);
+// 			if(user){
+// 				done(null,user);
+// 			}
+// 			else{
+// 				var newUser = new db.Users({
+// 					provider: 'facebook',
+// 					username: profile.username,
+// 					name: profile.displayName,
+// 					providerID: profile.id,
+// 					oauthToken: token,
+// 					created: Date.now(),
+// 					email : "",
+// 					phone: "",
+// 					banned: false
+// 				}).save(function (err, newUser){
+// 					if(err) console.log(err);
+// 					done(null, newUser);
+// 				});
+// 			}
+// 		});
+// 	}
+// ));
 
 //server initialization
 
@@ -108,7 +107,7 @@ app.configure(function(){
 	app.use(express.logger('dev'));
 	app.use(express.bodyParser());
 	app.use(express.cookieParser());
-	app.use(express.session({ secret: config.secret, cookie: {maxAge: 12960000000}, store: new RedisStore({client:redisClient})}));
+	app.use(express.session({ secret: process.env.SECRET, cookie: {maxAge: 12960000000}, store: new RedisStore({client:redisClient})}));
 	// app.use(express.session({ secret: config.secret, cookie: {maxAge: 12960000000} }));
 	app.use(express.methodOverride());
 	app.use(passport.initialize());
