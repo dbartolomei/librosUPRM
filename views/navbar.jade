@@ -12,8 +12,8 @@
               .dropdown-menu(style='padding: 15px; padding-bottom:15px;')
                 a.btn.btn-info.loginBTN(href="/auth/twitter") Twitter
                 br
-                a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
                 br
+                a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
                 br
         else
           li
@@ -21,7 +21,7 @@
           li
             a(href='/account') My Account
       .col-sm-3.col-md-3.pull-right
-        form.navbar-form(role='search', action='/search', method='post')
+        form.navbar-form(action='/search', method='post', name='search', enctype="multipart/form-data")
           .input-group
             input#srch-term.form-control(type='text', placeholder='Search', name='srch-term')
             .input-group-btn

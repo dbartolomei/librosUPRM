@@ -21,6 +21,9 @@ module.exports = function(app,express){
 	app.post('/book/delete', book.delete);			//DELETE a book especified by book_id
 
 
+	app.get('/single_view/:id',book.single_view);
+
+	
 	/*TWITTER AUTHENTICATION*/
 	app.get('/auth/twitter', passport.authenticate('twitter'));  //GET Request for twitter auth
 	app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/account', failureRedirect: '/' })); //callback

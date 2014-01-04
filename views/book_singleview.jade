@@ -1,0 +1,34 @@
+extends layout
+
+block script
+
+block content
+  include navbar
+  .container#book_singleview
+    .row
+      .col-md-6.col-md-offset-2
+        h1 #{book.title} 
+          span.btn.btn-success.disabled $#{book.price}
+        
+        h3 #{book.authors}
+        
+        p
+          strong Description by Publisher:
+            span.italic.not_bold #{book.description}
+        
+        p
+          strong Description by Owner:
+            span.italic.not_bold  #{book.owner_description}
+        p
+          strong ISBN10: 
+            span.not_bold #{book.isbn10}
+        p
+          strong ISBN13: 
+            span.not_bold #{book.isbn13}
+
+        h4 Contact Information
+        p Name: #{book.userID.name}
+        p Email: #{book.userID.email}
+        p Phone: #{book.userID.phone}
+      .col-sm-4
+        img(src=book.thumbnail)  

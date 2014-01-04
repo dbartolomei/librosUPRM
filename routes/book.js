@@ -56,18 +56,29 @@ exports.newBook = function(req,res,next){
 
 //initial implementation for the search functionality. NEED MORE WORK
 
-exports.search = function(req,res,next){
-	var data = {"data" : ""}
-	db.Books.textSearch(req.body.query,function(err, output){
-		// output.populate('userID');
+exports.search = function(req,res,next){ //req.body.query
+	db.Books.textSearch('electric',function(err, output){
+		var data = {'data':[]};
+			data.auth = req.isAuthenticated();
+
 		if(err) return handleError(err);
 		var inspect = require('util').inspect;
-		data.data = output.results;
-		data.auth = req.isAuthenticated();
 
-		console.log(data);
-
-		res.render('book_search_list',data);
+		var send = false;
+		
+		for(var i = 0; i < output.results.length ;i++){
+			var book = {'book': output.results[i].obj, 'user': '' }
+			db.Users.findById(output.results[i].obj.userID).exec(function(err,user){
+				book.user = user;
+				data.data.push(book);
+				// console.log(i == output.results.length);
+			})
+			console.log(i == output.results.length -1);
+			if(i == output.results.length -1){
+				res.send(data);
+			}
+		}
+		
 	})
 }
 
@@ -88,4 +99,14 @@ exports.delete = function(req,res,next){
 		console.log(output);
 		res.send(200);
 	})
+}
+
+exports.single_view = function(req,res,next){
+	console.log(req.params.id);
+	db.Books.findById(req.params.id).populate('userID').exec(function(err, book){
+		console.log(book);
+		res.render('book_singleview', {'book':book});
+	})
+	
+
 }

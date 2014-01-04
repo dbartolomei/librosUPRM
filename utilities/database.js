@@ -4,10 +4,11 @@ var config = require('./config');
 var textSearch = require('mongoose-text-search');
 var Schema = mongoose.Schema;
 
-//Connect to the database using the configuration url
 mongoose.connect(config.databaseURL);
 
+
 var db = mongoose.connection;
+
 
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -57,3 +58,4 @@ exports.Books = Books;
 
 // Export mongoose
 exports.mongoose = mongoose;
+

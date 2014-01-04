@@ -2,11 +2,14 @@
 
 // Import module dependencies
 var express = require('express');
+var app = express();
 var http = require('http');
 var path = require('path');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var config = require('./utilities/config');
+var db = require('./utilities/database');
 var RedisStore = require('connect-redis')(express);
 var redisClient = require('redis').createClient(config.redis.port, config.redis.host);
   	redisClient.auth(config.redis.password, function(err) {
@@ -15,8 +18,6 @@ var redisClient = require('redis').createClient(config.redis.port, config.redis.
   	});
 
 // Import configurations data
-var config = require('./utilities/config');
-var db = require('./utilities/database');
 
 
 // Function to serialize users
@@ -95,7 +96,7 @@ passport.use(new FacebookStrategy({
 ));
 
 //server initialization
-var app = express();
+
 
 
 //server configuration
@@ -113,6 +114,7 @@ app.configure(function(){
 	app.use(passport.initialize());
 	app.use(passport.session());
 	app.use(express.static(path.join(__dirname, 'public')));
+	app.use('/single_view', express.static(__dirname + '/public'));
 	app.use(app.router);
 });
 
