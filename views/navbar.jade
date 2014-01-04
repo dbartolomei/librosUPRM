@@ -18,8 +18,15 @@
         else
           li
             a#add(data-toggle='modal', href='#addTextBook') + Book  
-          li
-            a(href='/account') My Account
+          li.dropdown
+            a.dropdown-toggle(href='#', data-toggle='dropdown')
+                i.glyphicon.glyphicon-user
+                b.caret
+              ul.dropdown-menu
+                  li
+                    a(href='/account') My Account
+                  li
+                    a(href='/logout') logout
       .col-sm-3.col-md-3.pull-right#navbar_search
         form.navbar-form(action='/search', method='post', name='search', enctype="multipart/form-data")
           .input-group

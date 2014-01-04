@@ -47,7 +47,7 @@ passport.use(new TwitterStrategy({
           provider: 'twitter',
           username: profile.username,
           name: profile.displayName,
-          providerID: profile.id,
+          provider_id: profile.id,
           oauthToken: token,
           created: Date.now(),
           email : "",
@@ -73,7 +73,7 @@ passport.use(new FacebookStrategy({
       if(user) done(null, user); 
       else{
         var new_user = new db.User({
-            provider:'facebook'
+            provider:'facebook',
             provider_id: 'facebook:' + profile.id,
             username: profile.username,
             name: profile.displayName,

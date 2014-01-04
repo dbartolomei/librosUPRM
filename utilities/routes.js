@@ -21,7 +21,7 @@ module.exports = function(app,express){
 	app.post('/book/delete', book.delete);			//DELETE a book especified by book_id
 
 
-	app.get('/single_view/:id',book.single_view);
+	app.get('/book/:id',book.single_view);
 
 	
 	/*TWITTER AUTHENTICATION*/
