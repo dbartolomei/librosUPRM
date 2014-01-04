@@ -63,36 +63,36 @@ passport.use(new TwitterStrategy({
 ));
 
 //Facebook Passport Strategy
-// passport.use(new FacebookStrategy({
-// 	clientID: config.facebook.id,
-// 	clientSecret: config.facebook.secret,
-// 	callbackURL: "/auth/facebook/callback"
-// 	},
-// 	function(accessToken, refreshToken, profile, done){
-// 		db.Users.findOne({customID: 'facebook:' + profile.id}, function(err, user){
-// 			console.log(user);
-// 			if(user){
-// 				done(null,user);
-// 			}
-// 			else{
-// 				var newUser = new db.Users({
-// 					provider: 'facebook',
-// 					username: profile.username,
-// 					name: profile.displayName,
-// 					providerID: profile.id,
-// 					oauthToken: token,
-// 					created: Date.now(),
-// 					email : "",
-// 					phone: "",
-// 					banned: false
-// 				}).save(function (err, newUser){
-// 					if(err) console.log(err);
-// 					done(null, newUser);
-// 				});
-// 			}
-// 		});
-// 	}
-// ));
+passport.use(new FacebookStrategy({
+	clientID: process.env.FACEBOOK_ID,
+	clientSecret: process.env.FACEBOOK_SECRET,
+	callbackURL: "/auth/facebook/callback"
+	},
+	function(accessToken, refreshToken, profile, done){
+		db.Users.findOne({customID: 'facebook:' + profile.id}, function(err, user){
+			console.log(user);
+			if(user){
+				done(null,user);
+			}
+			else{
+				var newUser = new db.Users({
+					provider: 'facebook',
+					username: profile.username,
+					name: profile.displayName,
+					providerID: profile.id,
+					oauthToken: token,
+					created: Date.now(),
+					email : "",
+					phone: "",
+					banned: false
+				}).save(function (err, newUser){
+					if(err) console.log(err);
+					done(null, newUser);
+				});
+			}
+		});
+	}
+));
 
 //server initialization
 
