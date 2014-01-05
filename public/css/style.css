@@ -23,6 +23,7 @@ body{
 .loginBTN{
 	width: 160px;
 	padding-left: 0px;	
+	margin-bottom: 10px;
 }
 
 /*profile*/
@@ -160,6 +161,9 @@ td.social_share{
 	position: relative;
 	float: left;
 }
+.loginBTN{
+	width: 100%;
+}
 
 }
 
@@ -176,5 +180,29 @@ body {
 }
 
 .navbar-inverse{
-	opacity: 0.6;
+	background-color: rgba(34, 34, 34, 0.63) !important;
+	border: none;
+}
+
+.navbar-inverse .navbar-nav>.open>a{
+	background-color: rgba(34, 34, 34, 0.70) !important;
+	border: none;
+}
+
+.panel{
+	background-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.navbar-inverse .navbar-nav>li>a, .navbar-inverse .navbar-brand {
+	color: rgba(255, 255, 255, 0.68) !important;
+}
+
+#header_account{
+	padding: 15px;
+	padding-bottom:10px;
+	background-color: rgba(255, 255, 255, 0) !important;
+	box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	border:none !important;
+
 }
