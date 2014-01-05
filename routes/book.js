@@ -16,7 +16,7 @@ exports.newBook = function(req,res,next){
 	console.log(req.body);
 	if(req.isAuthenticated()){ //añadir condición para verificar USERID
 		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){  //Añadir condición para identificar que el duplicado es bajo un solo user
-			if(book === null){
+			if(book === null || book.userID != req.user._id){
 				var tempTags = [];
 					tempTags.push(req.body.title);
 					tempTags = tempTags.concat(req.body.title.split(' '));

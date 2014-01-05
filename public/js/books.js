@@ -61,14 +61,13 @@ $(document).ready(function(){
 				data: bookdata,
 				success: function(){
 					// console.log(textStatus + ' saved: '+ data);
-					console.log('whugu');
 				},
 				error: function(){
 					// console.log(textStatus);
 				},
 				statusCode:{
 					409: function(){
-						alert('duplicated book motherfucker');
+						alert('Duplicated Book');
 					}
 				}
 
