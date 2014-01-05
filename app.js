@@ -69,7 +69,7 @@ passport.use(new FacebookStrategy({
   callbackURL: "/auth/facebook/callback"
   },
   function(token, tokenSecret, profile, done){
-    db.User.findOne({provider_id: profile.id}, function(err, user){
+    db.Users.findOne({provider_id: profile.id}, function(err, user){
       if(user) done(null, user); 
       else{
         var new_user = new db.User({
