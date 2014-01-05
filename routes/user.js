@@ -1,26 +1,20 @@
 //Functions to handle most routes
 var db = require('../utilities/database');
-var passport = require('passport');
-
-passport.deserializeUser(function(id, done) {
-  db.Users.findById(id, function(err, user) {
-    done(err, user);
-  }); 
-});
-
-
 /*
 * Render the user profile
 */
 exports.account = function(req, res, next){
 	if(req.isAuthenticated()){
 		db.Users.findOne({_id: req.user._id}, function(err, user){
+			console.log(req.user._id)
 			db.Books.find({userID: req.user._id}, function(err, books){
 				var data = {};
 				data.user = user;
+				console.log(user);
 				data.books = books;
+				console.log(books);
 				data.auth = true;
-				console.log(data);
+				// console.log(data);
 				res.render('account', data);
 			})
 		})

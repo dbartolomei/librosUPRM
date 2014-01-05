@@ -1,13 +1,13 @@
 var db = require('../utilities/database');
-var passport = require('passport');
+// var passport = require('passport');
 var async = require('async');
 
 // Function to deserialize passport users 
-passport.deserializeUser(function(id, done) {
-  db.Users.findById(id, function(err, user) {
-    done(err, user);
-  }); 
-});
+// passport.deserializeUser(function(id, done) {
+//   db.Users.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
 
 // create a new book
 exports.newBook = function(req,res,next){

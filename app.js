@@ -21,15 +21,17 @@ var redisClient = require('redis').createClient(process.env.REDIS_PORT, process.
 
 // Function to serialize users
 passport.serializeUser(function(user, done){
-  done(null, user.id)
+  console.log(user);
+    done(null, user.id)
+
 });
 
 passport.deserializeUser(function(id, done){
-  db.Users.findOne(id, function(err, user){
+    db.Users.findOne({_id:id}, function(err, user){
+    console.log('Deserialize: ' + user.email);
     done(err, user);
   });
 });
-
 
 //Twitter Strategy
 passport.use(new TwitterStrategy({
@@ -38,11 +40,15 @@ passport.use(new TwitterStrategy({
   callbackURL:"/auth/twitter/callback",
   },
   function(token, tokenSecret, profile, done){
-    db.Users.findOne({providerID: profile.id}, function(err, user){
+    console.log('profile_id: '+profile.id);
+    db.Users.findOne({provider_id: profile.id}, function(err, user){
+      // console.log('profile_id: '+ user.profile_id)
       if(user){
+        // console.log('user found: '+ user);
         done(null, user);
       }
       else{
+        console.log('create new user');
         var new_user = new db.Users({
           provider: 'twitter',
           username: profile.username,
@@ -53,8 +59,10 @@ passport.use(new TwitterStrategy({
           email : "",
           phone: "",
           banned: false
-        }).save(function (err, newUser){
-          if(err) console.log(err);
+        }).save(function (err, new_user){
+          if(err) {console.log(err);}
+          
+          console.log('user created: '+ new_user);
           done(null, new_user);
         });
       }
