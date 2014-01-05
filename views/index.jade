@@ -5,19 +5,28 @@ block script
 block content
 	include navbar
 	
-	#searchBar
-		h1 UPRMbooks
+	#index_box.container
+		h1 uprmbooks
 		h3 Search for textbooks by ISBN, title o author
-		.row
-			.col-md-6.col-md-offset-3
-			form.navbar-form.navbar-left(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
-				.form-group
-					input#srch-term.form-control(type='text', placeholder='Search', name='query', required)
-				button.btn.btn-default(type='submit')
-					i.glyphicon.glyphicon-search
+		//- .row
+		//- 	.col-sm-4.col-sm-offset-4
+		form#index_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
+			.form-group
+				input#main#srch-term.form-control(type='text', placeholder='Search', name='query', required)
+			button.btn.btn-default(type='submit')
+				i.glyphicon.glyphicon-search
 	script.
 		$(document).ready(function(){
 			$('#topsearch').hide();
 		})
-
-//- *0.90*0.151
+	style.
+		html { 
+			background: url(img/bg.jpg) no-repeat center center fixed; 
+			-webkit-background-size: cover;
+			-moz-background-size: cover;
+			-o-background-size: cover;
+			background-size: cover;
+		}
+		body {
+		background:none;
+		}

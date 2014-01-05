@@ -1,12 +1,12 @@
 body{
 	font-family: Helvetica;
 }
-#searchBar{
+#index_box{
 	text-align: center;
-	margin-top: 12%;
+	margin-top: 10%;
 }
 
-#searchBar h1{
+#index_box h1{
 	font-family: Helvetica;
 	font-weight: bolder;
 	font-size: 90px;
@@ -14,7 +14,7 @@ body{
 	margin-bottom: 0px;
 }
 
-#searchBar h3{
+#index_box h3{
 	color: #404040;
 	margin-top: 0px;
 }
@@ -48,12 +48,11 @@ body{
 	margin: 0 auto;
 }
 
-#custom-search-form{
+/*#custom-search-form{
 	width: 30%;
 }
-
-#custom-search-form input{
-	width: 90%;
+*/
+/*#custom-search-form input{
 	float: left;
 	box-shadow: none;
 }
@@ -63,12 +62,12 @@ body{
 	background: none;
 	border: 1px #156112 solid;
 }
-
-#custom-search-form button:hover{
+*/
+/*#custom-search-form button:hover{
 	background-color: rgba(21,97,18,0.1);
 	color: #156112;
 }
-
+*/
 .navbar{
 	border-radius: 0px;
 }
@@ -125,13 +124,57 @@ td.social_share{
 	width: 66px;
 }
 
+#index_form{
+	width: 360px;
+	padding: 0px;
+	margin: 0 auto;
+	margin-top: 50px;
+	opacity: 0.6;
+}
+
+#index_form .form-group{
+	width: 310px;
+	position: relative;
+	float: left;
+}
+
+#index_form button{
+	position: relative;
+	float: right;
+}
 
 @media only screen and (max-width : 360px){
-	#searchBar h1{
+	#index_box h1{
 		font-family: Helvetica;
 		font-weight: bolder;
 		font-size: 50px;
 		color: #156112;
 		margin-bottom: 0px;
 	}
+	#index_form{
+	width: 300px;
+	padding: 0px;
+}
+	#index_form .form-group{
+	width: 260px;
+	position: relative;
+	float: left;
+}
+
+}
+
+
+html { 
+	background: url(/img/bg.jpg) no-repeat center center fixed !important; 
+	-webkit-background-size: cover !important;
+	-moz-background-size: cover !important;
+	-o-background-size: cover !important;
+	background-size: cover !important;
+}
+body {
+	background:none !important;
+}
+
+.navbar-inverse{
+	opacity: 0.6;
 }

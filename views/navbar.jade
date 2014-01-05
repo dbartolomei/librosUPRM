@@ -15,8 +15,7 @@ nav.navbar.navbar-inverse(role='navigation')
           i.glyphicon.glyphicon-search
 
     ul.nav.navbar-nav.navbar-right
-      //- li
-      //-   a(href='/books') Show All Books
+
 
       if !auth
         li.dropdown
@@ -28,7 +27,7 @@ nav.navbar.navbar-inverse(role='navigation')
             a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
       else
         li
-          a#add(data-toggle='modal', href='#addTextBook') + Book
+          a#add(data-toggle='modal', href='#addTextBook') + textbook
         li.dropdown
           a.dropdown-toggle(href='#', data-toggle='dropdown')
               i.glyphicon.glyphicon-user
@@ -39,6 +38,3 @@ nav.navbar.navbar-inverse(role='navigation')
                 li
                   a(href='/logout') logout
 
-
-
-      include book_add
