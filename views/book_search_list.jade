@@ -11,7 +11,12 @@ block content
         });
       });
   .container
-    .panel-group
+    form#list_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
+      .form-group
+        input#main#srch-term.form-control(type='text', placeholder='Search', name='query', required)
+      button.btn.btn-default(type='submit')
+        i.glyphicon.glyphicon-search
+    .panel-group(style='margin-top:80px;')
       each item in data
         .panel.panel-default
           .panel-heading

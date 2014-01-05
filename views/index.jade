@@ -1,13 +1,20 @@
 extends layout
 
-block script
-	//something goes here
+block head
+    title uprmbooks
+    meta(name='description', content='Find used textbooks by ISBN, title or author in UPRM')
+    meta(property='og:site_name', content='www.uprmbooks.com')
+    meta(property='og:title', content='uprmbooks')
+    meta(property='og:description', content='Find used textbooks by ISBN, title or author in UPRM')
+    meta(property='og:image', content=book.thumbnail)
+    meta(property='og:url', content='http://www.uprmbooks.com/book/'+book._id)
+
 block content
 	include navbar
 	
 	#index_box.container
 		h1 uprmbooks
-		h3 Search for textbooks by ISBN, title o author
+		h3 Search textbooks by ISBN, title or author
 		//- .row
 		//- 	.col-sm-4.col-sm-offset-4
 		form#index_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
@@ -19,14 +26,5 @@ block content
 		$(document).ready(function(){
 			$('#topsearch').hide();
 		})
-	style.
-		html { 
-			background: url(img/bg.jpg) no-repeat center center fixed; 
-			-webkit-background-size: cover;
-			-moz-background-size: cover;
-			-o-background-size: cover;
-			background-size: cover;
-		}
-		body {
-		background:none;
-		}
+	//- include footer
+	

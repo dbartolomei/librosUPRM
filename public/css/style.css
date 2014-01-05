@@ -1,6 +1,10 @@
 body{
 	font-family: Helvetica;
 }
+
+html, body {
+  height: 100% !important;
+}
 #index_box{
 	text-align: center;
 	margin-top: 10%;
@@ -144,6 +148,27 @@ td.social_share{
 	float: right;
 }
 
+
+#list_form{
+	width: 300px;
+	padding: 0px;
+	margin: 0 auto;
+	float: right;
+	margin-top: 20px;
+	opacity: 0.6;
+}
+
+#list_form .form-group{
+	width: 260px;
+/*	position: relative;
+*/	float: left;
+}
+
+#list_form button{
+	/*position: relative;*/
+	float: right;
+}
+
 @media only screen and (max-width : 360px){
 	#index_box h1{
 		font-family: Helvetica;
@@ -200,9 +225,33 @@ body {
 #header_account{
 	padding: 15px;
 	padding-bottom:10px;
-	background-color: rgba(255, 255, 255, 0) !important;
+	background-color: rgba(255, 255, 255, .8) !important;
 	box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	border:none !important;
 
+}
+
+footer{
+	height: 142px;
+}
+footer ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+footer li{
+	display:inline;
+	padding-left: 30px;
+}
+
+.wrapper{
+	min-height: 100%;
+	margin-bottom: -142px; 
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
 }

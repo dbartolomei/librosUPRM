@@ -2,12 +2,6 @@ var db = require('../utilities/database');
 // var passport = require('passport');
 var async = require('async');
 
-// Function to deserialize passport users 
-// passport.deserializeUser(function(id, done) {
-//   db.Users.findById(id, function(err, user) {
-//     done(err, user);
-//   });
-// });
 
 // create a new book
 exports.newBook = function(req,res,next){
@@ -54,13 +48,16 @@ exports.newBook = function(req,res,next){
 	}
 }
 
-//initial implementation for the search functionality. NEED MORE WORK
 
 exports.search = function(req,res,next){ //
 	db.Books.textSearch(req.body.query,function(err, output){
 		var data = {'data':[]};
 			data.auth = req.isAuthenticated();
 
+		if(output.results.length == 0){
+			res.redirect('/books');
+		}
+		
 		if(err) return handleError(err);
 		var inspect = require('util').inspect;
 
