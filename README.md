@@ -4,9 +4,9 @@ A proof of concept of a simple textbook-for-sale listing service. It start after
 
 
 ###Stack
-* Node.js (Express.js)
-* MongoDB + Mongoose 3.8
-* Bootstrap 3.0.3
+* NodeJS (ExpressJS)
+* MongoDB (Mongoose)
+* Bootstrap 3
 
 ### Tasks
 * ~~Twitter Login~~
@@ -14,6 +14,6 @@ A proof of concept of a simple textbook-for-sale listing service. It start after
 * ~~Create book listings~~
 * ~~Search book listings~~
 * ~~Finish book search capabilities~~
-* Develop single product view
-* Mobile styling
-* Facebook Login
+* ~~Develop single book view~~
+- ~~Facebook Auth~~
+- Mobile styling
