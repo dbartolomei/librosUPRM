@@ -43,7 +43,7 @@ passport.use(new TwitterStrategy({
         done(null, user);
       }
       else{
-        var newUser = new db.Users({
+        var new_user = new db.Users({
           provider: 'twitter',
           username: profile.username,
           name: profile.displayName,
@@ -55,7 +55,7 @@ passport.use(new TwitterStrategy({
           banned: false
         }).save(function (err, newUser){
           if(err) console.log(err);
-          done(null, newUser);
+          done(null, new_user);
         });
       }
     });
@@ -72,7 +72,7 @@ passport.use(new FacebookStrategy({
     db.Users.findOne({provider_id: profile.id}, function(err, user){
       if(user) done(null, user); 
       else{
-        var new_user = new db.User({
+        var new_user = new db.Users({
             provider:'facebook',
             provider_id: profile.id,
             username: profile.username,
