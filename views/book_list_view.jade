@@ -1,57 +1,41 @@
-script.
-		$(function(){
-			$('.created').each(function(){
-				$(this).text(moment(Date.parse($(this).text())).fromNow());
-			});
-		});
 each book in data
-				.panel.panel-default
-					.panel-heading
-						h4.panel-title
-							a.accordion-toggle(data-toggle='collapse',data-parent="#accordion", href="#"+book._id)
-								.row
-									.col-sm-8
-										p #{book.title}
-									.col-sm-2
-										p $#{book.price}
-									.col-sm-2
-										p.created #{book.created}
-					.panel-collapse.collapse(id=book._id)
-						.panel-body
-							.row
-								.col-md-4
-									h4 Book Information: 
-									p 
-										b Title: 
-										| #{book.title}
-									p 
-										b Condition: 
-										| #{book.condition}
-									p 
-										b Authors:  
-										| #{book.authors}
-									p 
-										b ISBN 13:
-										| #{book.isbn13}
-									p 
-										b ISBN 10: 
-										| #{book.isbn10}
-								.col-md-2
-									img(width='100%', src=book.thumbnail)
-							p 
-								b Book Description: 
-								| #{book.description}
-							p 
-								b Owner Description: 
-								| #{book.owner_description}
+        .panel.panel-default
+          .panel-heading
+            h4.panel-title
+              a.accordion-toggle(data-toggle='collapse',data-parent="#accordion", href="#"+book._id)
+                .row
+                  .col-sm-8
+                    p #{book.title}
+                  .col-sm-2
+                    p $#{book.price}
+                  .col-sm-2
+                    p.created #{book.created}
+          .panel-collapse.collapse(id=book._id)
+            .panel-body
+              .row
+                .col-md-6
+                  h1 #{book.title} 
+                    //- span.btn.btn-success.disabled $#{book.price}
+                  
+                  h3 #{book.authors}
+                  
+                  p
+                    strong Description by Publisher:
+                      span.italic.not_bold #{book.description}
+                  
+                  p
+                    strong Description by Owner:
+                      span.italic.not_bold  #{book.owner_description}
+                  p
+                    strong ISBN10: 
+                      span.not_bold #{book.isbn10}
+                  p
+                    strong ISBN13: 
+                      span.not_bold #{book.isbn13}
 
-							h4 Contact Information:
-							p 
-								b name: 
-								| #{book.userID.name}
-							p 
-								b email: 
-								a(href='mailto:'+ book.userID.email) #{book.userID.email}
-							p 
-								b phone: 
-								a(href='tel:'+ book.userID.phone) #{book.userID.phone}
+                  h4 Contact Information
+                  p Name: #{book.userID.name}
+                  p Email: #{book.userID.email}
+                  p Phone: #{book.userID.phone}
+                .col-md-2.col-sm-offset-1
+                  img.book_thumbnail(src=book.thumbnail)  

@@ -1,7 +1,7 @@
 extends layout
 
 block head
-  title book.title
+    title #{book.title +' - $' + book.price}
     meta(name='description', content=book.description)
     meta(property='og:site_name', content='www.uprmbooks.com')
     meta(property='og:title', content=book.title)
@@ -39,4 +39,4 @@ block content
         p Email: #{book.userID.email}
         p Phone: #{book.userID.phone}
       .col-sm-2
-        img(src=book.thumbnail)  
+        img.book_thumbnail(src=book.thumbnail)  

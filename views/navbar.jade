@@ -1,39 +1,44 @@
-.navbar.navbar-inverse
-    .container
-      a.navbar-brand(href='/')
-        | UPRMbooks
-      ul.nav.navbar-nav.pull-right                    
-        li.divider-vertical
-        if !auth
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-              | Sign In 
-              strong.caret
-              .dropdown-menu(style='padding: 15px; padding-bottom:15px;')
-                a.btn.btn-info.loginBTN(href="/auth/twitter") Twitter
-                br
-                br
-                a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
-                br
-        else
-          li
-            a#add(data-toggle='modal', href='#addTextBook') + Book  
-          li.dropdown
-            a.dropdown-toggle(href='#', data-toggle='dropdown')
-                i.glyphicon.glyphicon-user
-                b.caret
-              ul.dropdown-menu
-                  li
-                    a(href='/account') My Account
-                  li
-                    a(href='/logout') logout
-      .col-sm-3.col-md-3.pull-right#navbar_search
-        form.navbar-form(action='/search', method='post', name='search', enctype="multipart/form-data")
-          .input-group
-            input#srch-term.form-control(type='text', placeholder='Search', name='query', required)
-            .input-group-btn
-              button.btn.btn-default(type='submit')
-                i.glyphicon.glyphicon-search
+nav.navbar.navbar-inverse(role='navigation')
+  .navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#nav_menu')
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href='/') uprmbooks
+  #nav_menu.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-left
+      #topsearch.form.navbar-form.navbar-left(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
+        .form-group
+          input#srch-term.form-control(type='text', placeholder='Search', name='query', required)
+        button.btn.btn-default(type='submit')
+          i.glyphicon.glyphicon-search
+
+    ul.nav.navbar-nav.navbar-right
+      //- li
+      //-   a(href='/books') Show All Books
+
+      if !auth
+        li.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown')
+            | Sell Your Books!
+            strong.caret
+          ul.dropdown-menu(style='padding: 15px; padding-bottom:15px;')
+            a.btn.btn-info.loginBTN(href="/auth/twitter") Twitter
+            a.btn.btn-primary.loginBTN(href="/auth/facebook") Facebook
+      else
+        li
+          a#add(data-toggle='modal', href='#addTextBook') + Book
+        li.dropdown
+          a.dropdown-toggle(href='#', data-toggle='dropdown')
+              i.glyphicon.glyphicon-user
+              b.caret
+            ul.dropdown-menu
+                li
+                  a(href='/account') My Account
+                li
+                  a(href='/logout') logout
+
 
 
       include book_add

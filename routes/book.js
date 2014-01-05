@@ -105,7 +105,8 @@ exports.single_view = function(req,res,next){
 	console.log(req.params.id);
 	db.Books.findById(req.params.id).populate('userID').exec(function(err, book){
 		console.log(book);
-		res.render('book_singleview', {'book':book});
+
+		res.render('book_singleview', {'book':book, 'auth':req.isAuthenticated()});
 	})
 	
 

@@ -36,7 +36,6 @@ block content
 						h4.panel-title
 							a.accordion-toggle#accordion2(data-toggle='collapse', data-parent='#profileaccordion', href='#collapseTwo')
 								| My Books
-								a.btn.btn-success#add(data-toggle='modal', href='#addTextBook') +textbook	
 								
 
 					#collapseTwo.panel-collapse.collapse
@@ -46,14 +45,14 @@ block content
 									-var facebookLink = 'http://www.facebook.com/sharer.php?s=100&p[title]='+item.title+' - $'+item.price+'&p[summary]='+item.description+'&p[url]=http://www.uprmbooks.com/book/'+item._id+'&p[images][0]='+item.thumbnail
 									div(id=item._id)
 										tr
-											td
+											td.social_share
 												a(href=facebookLink, target="_blank", onclick="return !window.open(this.href, 'Facebook', 'width=640,height=300')")
 													img(src="/img/share.png")
 											td
 												a(href="http://www.uprmbooks.com/book/"+item._id, target="_blank") #{item.title}
 											td
-												a(_id=item._id).btn.btn-danger.remove_item delete
-						
+												a(_id=item._id, title='Delete: ' + item.title).remove_item x
+							a.btn.btn-primary.btn-lg.pull-right(data-toggle='modal', href='#addTextBook') Add textbook
 							
 		script.
 			$(document).ready(function(){

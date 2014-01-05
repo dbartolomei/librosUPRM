@@ -81,9 +81,9 @@ body{
 	padding-left: 15px;
 }
 
-.panel-body img{
-	padding-bottom: 20px;
-	max-width: 300px;
+img.book_thumbnail{
+	/*padding-bottom: 20px;*/
+	width: 300px;
 }
 
 .accordion-toggle p{
@@ -119,4 +119,19 @@ body{
 
 .not_bold{
 	font-weight: normal;
+}
+
+td.social_share{
+	width: 66px;
+}
+
+
+@media only screen and (max-width : 360px){
+	#searchBar h1{
+		font-family: Helvetica;
+		font-weight: bolder;
+		font-size: 50px;
+		color: #156112;
+		margin-bottom: 0px;
+	}
 }

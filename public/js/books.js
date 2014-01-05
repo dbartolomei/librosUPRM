@@ -76,8 +76,6 @@ $(document).ready(function(){
 		})
 	})
 
-//document.location.href='/account/';
-
 	$('#ISBN').change(function(){
 		if($(this).val().length >= 10){
 			$('#isbnSearch').removeClass('disabled');
@@ -103,5 +101,11 @@ $(document).ready(function(){
         }
 
 	})
+
+	$(function(){
+      $('.created').each(function(){
+        $(this).text(moment(Date.parse($(this).text())).fromNow());
+      });
+    });
 })
 
