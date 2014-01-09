@@ -4,12 +4,6 @@ block script
 
 block content
   include navbar
-    script.
-      $(function(){
-        $('.created').each(function(){
-          $(this).text(moment(Date.parse($(this).text())).fromNow());
-        });
-      });
   .container
     form#list_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
       .form-group
