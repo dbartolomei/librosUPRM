@@ -13,7 +13,7 @@ block content
 						h4.panel-title
 							a.accordion-toggle#accordion1(data-toggle='collapse', data-parent='#profileaccordion', href='#collapseOne')
 								| My Information
-					#collapseOne.panel-collapse.collapse
+					#collapseOne.panel-collapse.collapse.in
 						.panel-body
 							form.form-horizontal#profileForm.col-lg-offset-10(action='/saveProfile',method='post', name='profileUpdate', enctype="multipart/form-data")
 								.form-group
@@ -25,7 +25,7 @@ block content
 									.col-lg-6
 										input#email.form-control(type='email', placeholder='Email',name='email', value='#{user.email}' , required)
 								.form-group
-									label.col-lg-3.control-label(for='phone') Phone
+									label.col-lg-3.control-label(for='phone',value=" ") Phone
 									.col-lg-4
 										input#phone.form-control(type='tel', placeholder='Phone', name='phone', value='#{user.phone}' )
 									.col-lg-2
@@ -56,15 +56,13 @@ block content
 							
 		script.
 			$(document).ready(function(){
-				if($('#phone').val() === 'undefined')
+				if($('#phone').val() == 'null')
 					$('#phone').val('');
 			})
 		script.
 			$(document).ready(function(){
-				if($('#email').val() != null){
-					$('#accordion2').click();
+				if($('#email').val().length != 0){
+					$('#collapseOne').removeClass('in');
+					$('#collapseTwo').addClass('in');
 				}
-				else		
-					$('#accordion1').click();
 			})
-

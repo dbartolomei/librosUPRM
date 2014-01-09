@@ -11,10 +11,10 @@ exports.newBook = function(req,res,next){
 		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
 			console.log(book.userID);
 			console.log(req.user._id);
-			if(book.userID !== req.user._id){
+			if(book.userID === req.user._id){
 				res.send(409);
 			}
-			else if(book === null){
+			else if(book === null || book.userID !== req.user._id){
 				var tempTags = [];
 					tempTags.push(req.body.title);
 					tempTags = tempTags.concat(req.body.title.split(' '));
@@ -52,7 +52,6 @@ exports.newBook = function(req,res,next){
 		})
 	}
 }
-
 
 exports.search = function(req,res,next){ //
 	db.Books.textSearch(req.body.query,function(err, output){
@@ -110,6 +109,4 @@ exports.single_view = function(req,res,next){
 
 		res.render('book_singleview', {'book':book, 'auth':req.isAuthenticated()});
 	})
-	
-
 }
