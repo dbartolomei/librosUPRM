@@ -60,10 +60,10 @@ $(document).ready(function(){
 				type: "POST",
 				data: bookdata,
 				success: function(){
-					// console.log(textStatus + ' saved: '+ data);
+					console.log('OK');
 				},
 				error: function(){
-					// console.log(textStatus);
+					console.log('ERROR');
 				},
 				statusCode:{
 					409: function(){
@@ -83,6 +83,7 @@ $(document).ready(function(){
 
 	$('.remove_item').click(function(){
 		var _id = $(this).attr('_id');
+		var node_to_delte = $(this);
 		console.log();
 
 		if(confirm("Are you sure you want to delete this Book?")){
@@ -92,9 +93,7 @@ $(document).ready(function(){
                 data: {"_id":_id},
                 success: function(data){ 
                 	console.log(_id + ' deleted ' + data);
-                	// console.log($(this).parent());
-                	$("#"+_id).remove();
-
+                	node_to_delte.parent().parent().remove();
                 }
             });
         }
