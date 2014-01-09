@@ -7,9 +7,9 @@ var async = require('async');
 exports.newBook = function(req,res,next){
 	// dummy data: 0136114997
 	console.log('Just added a new book');
-	console.log(req.body);
-	if(req.isAuthenticated()){ //añadir condición para verificar USERID
-		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){  //Añadir condición para identificar que el duplicado es bajo un solo user
+	console.log(req.body.isbn10);
+	if(req.isAuthenticated()){
+		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
 			if(book === null || book.userID != req.user._id){
 				var tempTags = [];
 					tempTags.push(req.body.title);
@@ -39,6 +39,7 @@ exports.newBook = function(req,res,next){
 					owner_description: req.body.owner_description
 				}).save(function(err, newBook){
 					if(err) console.log(err);
+					res.send(200);
 				})
 			}
 			else{

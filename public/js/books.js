@@ -8,17 +8,6 @@ $(document).ready(function(){
 	$('#isbnSearch').click(function(){
 		$('#thumb').remove();
 		var isbn = $('#ISBN').val();		
-		var title; 
-		var authors;
-		var publisher;
-		var publishedDate;
-		var description;
-		var isbn10;
-		var isbn13;
-		var smallthumbnail;
-		var thumbnail;
-		var price;
-		var condition;
 		var bookdata = {};
 		$.ajax({
 			url: 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+isbn,
@@ -40,29 +29,29 @@ $(document).ready(function(){
 				$('#publishedDate').val(bookdata.publishedDate);
 				$('.bookInfo, #showImage').removeClass('hide');
 				$('#thumbnail').prepend('<img id="thumb" style="width:120px;margin-top:10px "src="'+bookdata.thumbnail+'"/>');
+			},
+			error: function(data) {
+				console.log('Book not found');
 			}
 		})
-		$('#save').click(function(){
+		$('#save').click(function(event){
+			event.preventDefault();
 			bookdata.price  = $('#price').val();
 			bookdata.condition = $('#condition').val();
 			bookdata.owner_description = $('#owner_description').val();
-			// $.post('/newBook', bookdata)
-			// .done(function(data, textStatus){
-			// 	console.log('new book added');
-			// 	console.log(textStatus);
-			// }).fail(function(data, textStatus){
-			// 	console.log('error');
-			// 	console.log(textStatus);
-			// })
-
+			console.log(bookdata);
 			$.ajax({
 				url: "/book/new",
 				type: "POST",
 				data: bookdata,
 				success: function(){
 					console.log('OK');
+					// location.reload(); // puercá.
+					window.location = '/account';
+
 				},
-				error: function(){
+				error: function(data){
+					console.log(data);
 					console.log('ERROR');
 				},
 				statusCode:{
