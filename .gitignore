@@ -4,4 +4,5 @@ thumbs.db
 node_modules/
 utilities/config.js
 Procfile
+Procfile_dev
 .env
