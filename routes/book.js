@@ -5,12 +5,16 @@ var async = require('async');
 
 // create a new book
 exports.newBook = function(req,res,next){
-	// dummy data: 0136114997
 	console.log('Just added a new book');
 	console.log(req.body.isbn10);
 	if(req.isAuthenticated()){
 		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
-			if(book === null || book.userID != req.user._id){
+			console.log(book.userID);
+			console.log(req.user._id);
+			if(book.userID !== req.user._id){
+				res.send(409);
+			}
+			else if(book === null){
 				var tempTags = [];
 					tempTags.push(req.body.title);
 					tempTags = tempTags.concat(req.body.title.split(' '));
@@ -43,7 +47,7 @@ exports.newBook = function(req,res,next){
 				})
 			}
 			else{
-				res.send(409, "Duplicated Book");
+				res.send(400);
 			}
 		})
 	}

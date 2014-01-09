@@ -1,8 +1,10 @@
 $(document).ready(function(){
-	$('#add').click(function(){
-		$('#thumb').remove();
-		$('#bookTitle, #authors, #ISBN').val('');
+	$('.add').click(function(){
 		$('.bookInfo').addClass('hide');
+		document.forms["book_add_form"].reset
+		console.log('clicked');	
+		$('#ISBN').val('');
+		$('#book_add_form').unbind('submit');
 	})
 
 	$('#isbnSearch').click(function(){
@@ -93,4 +95,3 @@ $(document).ready(function(){
       });
     });
 })
-

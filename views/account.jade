@@ -52,7 +52,7 @@ block content
 												a(href="http://www.uprmbooks.com/book/"+item._id, target="_blank") #{item.title}
 											td
 												a(_id=item._id, title='Delete: ' + item.title).remove_item x
-							a.btn.btn-primary.pull-right(data-toggle='modal', href='#addTextBook') Add textbook
+							a.btn.btn-primary.pull-right(class='add', data-toggle='modal', href='#addTextBook') Add textbook
 							
 		script.
 			$(document).ready(function(){
