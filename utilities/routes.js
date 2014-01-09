@@ -12,6 +12,7 @@ module.exports = function(app,express){
 	app.get('/', index.index);						// GET main view
 	app.get('/account', user.account);				// GET user view
 	app.get('/books',book.index);					// GET all listed books
+	app.get('/book/404', index.not_found);
 
 	
 	app.post('/saveProfile',user.profileUpdate);	// POST update user profile	
@@ -19,7 +20,6 @@ module.exports = function(app,express){
 	
 	app.post('/book/new', book.newBook);				// POST a new book			
 	app.post('/book/delete', book.delete);			//DELETE a book especified by book_id
-
 
 	app.get('/book/:id',book.single_view);
 

@@ -60,7 +60,7 @@ exports.search = function(req,res,next){ //
 			data.auth = req.isAuthenticated();
 
 		if(output.results.length == 0){
-			res.redirect('/books');
+			res.redirect('/book/404');
 		}
 		
 		if(err) return handleError(err);
