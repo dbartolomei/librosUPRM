@@ -46,7 +46,6 @@ $(document).ready(function(){
 				data: bookdata,
 				success: function(){
 					console.log('OK');
-					// location.reload(); // puercá.
 					window.location = '/account';
 
 				},
@@ -86,7 +85,6 @@ $(document).ready(function(){
                 }
             });
         }
-
 	})
 
 	$(function(){
