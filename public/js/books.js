@@ -5,6 +5,7 @@ $(document).ready(function(){
 		console.log('clicked');	
 		$('#ISBN').val('');
 		$('#book_add_form').unbind('submit');
+		$('#isbn_progress').css('width','0%');
 	})
 
 	$('#isbnSearch').click(function(){
@@ -66,6 +67,7 @@ $(document).ready(function(){
 	})
 
 	$('#ISBN').change(function(){
+		console.log($(this).val().length);
 		if($(this).val().length >= 10){
 			$('#isbnSearch').removeClass('disabled');
 		}
@@ -94,4 +96,39 @@ $(document).ready(function(){
         $(this).text(moment(Date.parse($(this).text())).fromNow());
       });
     });
+
+//     $('#ISBN').on('keypress', function(ev) {
+//     var keyCode = window.event ? ev.keyCode : ev.which;
+//     //codes for 0-9
+//     if (keyCode < 48 || keyCode > 57) {
+//     	alert('ISBN can only contain numbers');
+//         ev.preventDefault();
+//     }
+// });
+
 })
+function price_change(){
+		var value = $("#price").val();
+    	value = value.replace(/[^0-9]+/g, '');
+    	$("#price").val(value);
+}
+
+
+function edValueKeyPress()
+    {
+    	var value = $("#ISBN").val();
+    	value = value.replace(/[^0-9]+/g, '');
+    	$("#ISBN").val(value);
+        
+        var edValue = $("#ISBN").val().length;
+        console.log(edValue);
+        var width = edValue*7.7;
+        $('#change').text(edValue);
+        $('#isbn_progress').css('width',width+'%')
+    
+        // var lblValue = document.getElementById("lblValue");
+        // lblValue.innerText = "The text box contains: "+s;
+    
+        //var s = $("#edValue").val();
+        //$("#lblValue").text(s);    
+    }

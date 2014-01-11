@@ -1,21 +1,29 @@
 var db = require('../utilities/database');
 // var passport = require('passport');
 var async = require('async');
-
+var ObjectID = require('mongodb').ObjectID;
 
 // create a new book
 exports.newBook = function(req,res,next){
-	console.log('Just added a new book');
-	console.log(req.body.isbn10);
 	if(req.isAuthenticated()){
 		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
-			console.log(book.userID);
-			console.log(req.user._id);
-			if(book.userID === req.user._id){
+
+			if(book === null){
+				aux_save(book);
+			}
+			else if(''+book.userID !== ''+ req.user._id){
+				aux_save(book);
+			}
+
+			else if(''+book.userID === ''+ req.user._id){
 				res.send(409);
 			}
-			else if(book === null || book.userID !== req.user._id){
-				var tempTags = [];
+			else{
+				res.send(400);
+			}
+
+			function aux_save(book){
+					var tempTags = [];
 					tempTags.push(req.body.title);
 					tempTags = tempTags.concat(req.body.title.split(' '));
 					tempTags = tempTags.concat(req.body.authors);
@@ -46,9 +54,7 @@ exports.newBook = function(req,res,next){
 					res.send(200);
 				})
 			}
-			else{
-				res.send(400);
-			}
+
 		})
 	}
 }

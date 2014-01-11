@@ -8,9 +8,17 @@
 				form.form-horizontal#book_add_form
 					.form-group
 						label.col-lg-3.control-label(for='ISBN', name='ISBN') ISBN
+							br
+							p 
+								span#change 0 
+								|  of 13
 						.col-lg-6
-							input#ISBN.form-control(type='text', placeholder='ISBN', name='ISBN', required)
-						button.btn.disabled#isbnSearch(type='button') Search
+							input#ISBN.form-control(type='text', placeholder='ISBN', name='ISBN', required,  onKeyPress="edValueKeyPress()", onKeyUp="edValueKeyPress()", maxlength="13")
+						button.btn#isbnSearch(type='button') Search
+						//- .col-lg-6.col-lg-offset-3
+							.progress.progress-striped.active
+								.progress-bar#isbn_progress(role='progressbar', aria-valuenow='45', aria-valuemin='0', aria-valuemax='100', style='width: 0%;')
+
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Title
 						.col-lg-6
@@ -46,8 +54,8 @@
 
 					.form-group.bookInfo.hide
 						label.col-lg-3.control-label(for='bookTitle', name='bookTitle') Your Price $
-						.col-lg-6
-							input#price.form-control(type='text', name='price', required, placeholder = '100.00')
+						.col-lg-3
+							input#price.form-control(type='text', name='price', required, placeholder = '100.00', onKeyPress="price_change()", onKeyUp="price_change()")
 					.form-group.bookInfo.hide
 						.col-lg-11	
 							button#save.btn.btn-primary.pull-right Save
