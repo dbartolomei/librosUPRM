@@ -2,10 +2,10 @@ extends layout
 
 block head
   title uprmbooks
-  meta(name='description', content='Encuentra libros usados a la venta en el RUM. ¡También añade los tuyos!')
+  meta(name='description', content='Encuentra libros usados en el RUM. ¡También Vende los tuyos!')
   meta(property='og:site_name', content='www.uprmbooks.com')
   meta(property='og:title', content='uprmbooks')
-  meta(property='og:description', content='Encuentra libros usados a la venta en el RUM. ¡También añade los tuyos!')
+  meta(property='og:description', content='Encuentra libros usados en el RUM. ¡También Vende los tuyos!')
   meta(property='og:image', content='http://www.uprmbooks.com/img/logo_fb.png')
   meta(property='og:url', content='http://www.uprmbooks.com/')
 
@@ -16,7 +16,7 @@ block content
     //- h1 uprmbooks
     center
       img.img-responsive(src='/img/logo_main.png')
-    h3 Busca libros usados a la venta en el RUM por ISBN, Título o Autor
+    h3 Busca libros por ISBN, Título o Autor
     //- .row
     //-   .col-sm-4.col-sm-offset-4
     form#index_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
