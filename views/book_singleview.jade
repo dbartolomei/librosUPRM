@@ -1,10 +1,11 @@
 extends layout
-
 block head
-    title #{book.title +' - $' + book.price}
+  -var title_aux = book.title + ' - $ '+ book.price;
+
+    title #{title_aux}
     meta(name='description', content=book.description)
     meta(property='og:site_name', content='www.uprmbooks.com')
-    meta(property='og:title', content=book.title)
+    meta(property='og:title', content=title_aux)
     meta(property='og:description', content=book.description)
     meta(property='og:image', content=book.thumbnail)
     meta(property='og:url', content='http://www.uprmbooks.com/book/'+book._id)
