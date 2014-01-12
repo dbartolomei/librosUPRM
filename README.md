@@ -16,4 +16,6 @@ A proof of concept of a simple textbook-for-sale listing service. It start after
 * ~~Finish book search capabilities~~
 * ~~Develop single book view~~
 - ~~Facebook Auth~~
-- Mobile styling
+- ~~Mobile styling~~
+
+Getting ready for primetime on Jan 15, 2014
