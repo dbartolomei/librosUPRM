@@ -11,17 +11,26 @@ block head
 
 block content
   include navbar
-  
+  //- .container
   #home.container
     center
       img.img-responsive(src='/img/logo_main.png')
-      //- h3 Busca libros por ISBN, Título o Autor
+      #index_box.container
+        form#index_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
+          .form-group
+            input#main#srch-term.form-control(type='text', placeholder='Busca libros por ISBN, Título o Autor', name='query', required)
+          button.btn.btn-default(type='submit')
+            i.glyphicon.glyphicon-search
+    br
+    br
+
+
     .row
       .col-sm-4
-        .steps.col-sm-offset-2
+        .steps
           center
             h4 1
-          p Busca la información de tus libros por su
+          p Para vender, busca la información de tus libros por su
             span.accent  ISBN
           img.isbn(src="/img/isbn.png")
       .col-sm-4.middle
@@ -39,7 +48,7 @@ block content
         .steps.social
           center
             h4 3
-          p Ponlos a la venta y compartelos en 
+          p Finalmente añadelos y compartelos en 
             span.accent  Facebook 
             | y 
             span.accent  Twitter.
@@ -47,11 +56,10 @@ block content
           img(src="/img/twitter.png")
 
 
-
   //- #index_box.container
   //-   //- h1 uprmbooks
   //-   center
-  //-     img.img-responsive(src='/img/logo_main.png')
+  //-     //- img.img-responsive(src='/img/logo_main.png')
   //-   h3 Busca libros por ISBN, Título o Autor
   //-   //- .row
   //-   //-   .col-sm-4.col-sm-offset-4
@@ -60,9 +68,9 @@ block content
   //-       input#main#srch-term.form-control(type='text', placeholder='Search', name='query', required)
   //-     button.btn.btn-default(type='submit')
   //-       i.glyphicon.glyphicon-search
-  script.
-    $(document).ready(function(){
-      $('#topsearch').hide();
-    })
-  //- include footer
+  //- script.
+  //-   $(document).ready(function(){
+  //-     $('#topsearch').hide();
+  //-   })
+  //- //- include footer
   

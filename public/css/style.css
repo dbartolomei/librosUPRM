@@ -7,7 +7,7 @@ html, body {
 }
 #index_box{
 	text-align: center;
-	margin-top: 10%;
+	/*margin-top: 10%;*/
 }
 
 #index_box h1{
@@ -134,7 +134,7 @@ td.social_share{
 	width: 360px;
 	padding: 0px;
 	margin: 0 auto;
-	margin-top: 50px;
+	/*margin-top: 50px;*/
 	opacity: 0.6;
 }
 
@@ -266,6 +266,7 @@ footer li{
 	width: 300px;
 	height: 350px;
 	background: #f3f3f3;
+	background: rgba(255,255,255,0.7);
 	display: block;
 	margin-left: 20px;
 	border-radius: 10px;
@@ -293,6 +294,7 @@ footer li{
 
 .steps .isbn{
 	width: 88%;
+	opacity: 0.6;
 
 }
 
@@ -310,7 +312,7 @@ footer li{
 }
 
 @media (min-width: 1200px){
-	 #home.container{
+	 #home.container, #index_box.container{
 	 	width: 970px !important;
 	 }
 }
