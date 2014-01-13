@@ -27,6 +27,7 @@ exports.newBook = function(req,res,next){
 					tempTags.push(req.body.title);
 					tempTags = tempTags.concat(req.body.title.split(' '));
 					tempTags = tempTags.concat(req.body.authors);
+					tempTags = tempTags.concat(req.body.owner_description.split(' '));
 					
 					for(var i = 0; i < req.body.authors.length; i++){
 						tempTags = tempTags.concat(req.body.authors[i].split(' '));
