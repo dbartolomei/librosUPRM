@@ -272,6 +272,9 @@ footer li{
 	border-radius: 10px;
 	padding: 20px;
 	text-align: center;
+	-webkit-box-shadow: 0px 0px 2px 0px rgba(50, 50, 50, 0.6);
+	-moz-box-shadow:    0px 0px 2px 0px rgba(50, 50, 50, 0.6);
+	box-shadow:         0px 0px 2px 0px rgba(50, 50, 50, 0.6);
 }
 
 .steps h4{
@@ -293,8 +296,8 @@ footer li{
 }
 
 .steps .isbn{
-	width: 88%;
-	opacity: 0.6;
+	width: 86%;
+	/*opacity: 0.7;*/
 
 }
 
