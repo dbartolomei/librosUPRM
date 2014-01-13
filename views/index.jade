@@ -12,18 +12,54 @@ block head
 block content
   include navbar
   
-  #index_box.container
-    //- h1 uprmbooks
+  #home.container
     center
       img.img-responsive(src='/img/logo_main.png')
-    h3 Busca libros por ISBN, Título o Autor
-    //- .row
-    //-   .col-sm-4.col-sm-offset-4
-    form#index_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
-      .form-group
-        input#main#srch-term.form-control(type='text', placeholder='Search', name='query', required)
-      button.btn.btn-default(type='submit')
-        i.glyphicon.glyphicon-search
+      //- h3 Busca libros por ISBN, Título o Autor
+    .row
+      .col-sm-4
+        .steps.col-sm-offset-2
+          center
+            h4 1
+          p Busca la información de tus libros por su
+            span.accent  ISBN
+          img.isbn(src="/img/isbn.png")
+      .col-sm-4.middle
+        .steps
+          center
+            h4 2
+          p Incluye el
+           span.accent  precio
+           | , la
+           span.accent  condición
+           |  y los 
+           span.accent  tags 
+           | que mejor describen el libro que quieres vender
+      .col-sm-4
+        .steps.social
+          center
+            h4 3
+          p Ponlos a la venta y compartelos en 
+            span.accent  Facebook 
+            | y 
+            span.accent  Twitter.
+          img(src="/img/facebook.png")
+          img(src="/img/twitter.png")
+
+
+
+  //- #index_box.container
+  //-   //- h1 uprmbooks
+  //-   center
+  //-     img.img-responsive(src='/img/logo_main.png')
+  //-   h3 Busca libros por ISBN, Título o Autor
+  //-   //- .row
+  //-   //-   .col-sm-4.col-sm-offset-4
+  //-   form#index_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
+  //-     .form-group
+  //-       input#main#srch-term.form-control(type='text', placeholder='Search', name='query', required)
+  //-     button.btn.btn-default(type='submit')
+  //-       i.glyphicon.glyphicon-search
   script.
     $(document).ready(function(){
       $('#topsearch').hide();
