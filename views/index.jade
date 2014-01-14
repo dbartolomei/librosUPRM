@@ -26,14 +26,14 @@ block content
 
 
     .row
-      .col-sm-4
+      .col-sm-4(style='padding-left:0px !important;')
         .steps
           center
             h4 1
           p Para vender, busca la información de tus libros por su
             span.accent  ISBN
           img.isbn(src="/img/isbn.png")
-      .col-sm-4.middle
+      .col-sm-4.middle(style='padding-left:0px !important;')
         .steps
           center
             h4 2
@@ -44,7 +44,7 @@ block content
            |  y los 
            span.accent  tags 
            | que mejor describen el libro que quieres vender
-      .col-sm-4
+      .col-sm-4(style='padding-left:0px !important;')
         .steps.social
           center
             h4 3
@@ -54,6 +54,9 @@ block content
             span.accent  Twitter.
           img(src="/img/facebook.png")
           img(src="/img/twitter.png")
+    .books_all
+      center
+        a(href="/books") Ver todos los libros disponibles
 
 
   //- #index_box.container

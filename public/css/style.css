@@ -7,7 +7,7 @@ html, body {
 }
 #index_box{
 	text-align: center;
-	/*margin-top: 10%;*/
+	margin-top: 32px;
 }
 
 #index_box h1{
@@ -263,7 +263,7 @@ footer li{
 
 
 .steps{
-	width: 280px;
+	width: 300px;
 	height: 350px;
 	background: #f3f3f3;
 	background: rgba(255,255,255,0.7);
@@ -322,4 +322,21 @@ footer li{
 
 #home.row{
 	/*margin-top:100px;*/
+}
+
+.books_all{
+	margin-top: 50px;
+}
+
+.books_all a{
+	color: gray;
+	opacity: 0.8;
+	padding-left: 20px;
+}
+
+.books_all:hover a{
+	color: gray;
+	opacity: 0.6;
+	text-decoration: none;
+	padding-left: 20px;
 }
