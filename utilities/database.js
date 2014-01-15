@@ -4,6 +4,7 @@ var textSearch = require('mongoose-text-search');
 var Schema = mongoose.Schema;
 
 mongoose.connect(process.env.MONGOHQ_URL);
+// mongoose.connect(process.env.DB_URL);
 
 
 var db = mongoose.connection;

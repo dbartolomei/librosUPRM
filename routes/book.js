@@ -5,6 +5,8 @@ var ObjectID = require('mongodb').ObjectID;
 
 // create a new book
 exports.newBook = function(req,res,next){
+	console.log('-----')
+	console.log(req); //pa ver que pasa...
 	if(req.isAuthenticated()){
 		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
 
@@ -65,7 +67,7 @@ exports.search = function(req,res,next){ //
 		var data = {'data':[]};
 			data.auth = req.isAuthenticated();
 
-		if(output.results.length == 0){
+		if(output.results.length == 0 || output == null){
 			res.redirect('/book/404');
 		}
 		
