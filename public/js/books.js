@@ -42,7 +42,8 @@ $(document).ready(function(){
 			bookdata.price  = $('#price').val();
 			bookdata.condition = $('#condition').val();
 			bookdata.owner_description = $('#owner_description').val();
-			console.log(bookdata);
+			console.log(bookdata.owner_description);
+			// console.log(bookdata);
 			$.ajax({
 				url: "/book/new",
 				type: "POST",

@@ -30,7 +30,7 @@ exports.newBook = function(req,res,next){
 					tempTags = tempTags.concat(req.body.title.split(' '));
 					tempTags = tempTags.concat(req.body.authors);
 					
-					if(owner_description.length > 0 || owner_description !== null){
+					if(req.body.owner_description.length > 0 || req.body.owner_description !== null){
 						tempTags = tempTags.concat(req.body.owner_description.split(' '));
 					}
 					
