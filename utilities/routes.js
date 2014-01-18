@@ -11,7 +11,9 @@ module.exports = function(app,express){
 
 	app.get('/', index.index);						// GET main view
 	app.get('/account', user.account);				// GET user view
-	app.get('/books',book.index);					// GET all listed books
+	app.get('/books',book.index);
+	app.get('/books/name', book.sort_name);			// GET all listed books
+	app.get('/books/price', book.sort_price);	
 	app.get('/book/404', index.not_found);
 
 	

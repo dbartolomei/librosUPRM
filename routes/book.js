@@ -101,10 +101,11 @@ exports.search = function(req,res,next){ //
 	})
 }
 
+//aggregate.sort({ field: 'asc', test: -1 });
 exports.index = function(req,res,next){
 	var data = {"data" : ""}
 	
-	db.Books.find({}).populate('userID').exec(function(err,books){
+	db.Books.find({}).sort({ field: 'asc', created: -1 }).populate('userID').exec(function(err,books){
 		// console.log(books);
 		data.data = books;
 		data.auth = req.isAuthenticated();
@@ -126,5 +127,29 @@ exports.single_view = function(req,res,next){
 		// console.log(book);
 
 		res.render('book_singleview', {'book':book, 'auth':req.isAuthenticated()});
+	})
+}
+
+
+exports.sort_name = function(req,res,next){
+	var data = {"data" : ""}
+	
+	db.Books.find({}).sort({ field: 'asc', title: 1 }).populate('userID').exec(function(err,books){
+		// console.log(books);
+		data.data = books;
+		data.auth = req.isAuthenticated();
+		res.render('book_list',data);
+	})
+}
+
+
+exports.sort_price = function(req,res,next){
+	var data = {"data" : ""}
+	
+	db.Books.find({}).sort({ field: 'asc', price: 1 }).populate('userID').exec(function(err,books){
+		// console.log(books);
+		data.data = books;
+		data.auth = req.isAuthenticated();
+		res.render('book_list',data);
 	})
 }

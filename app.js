@@ -115,6 +115,8 @@ app.configure(function(){
   app.use(passport.session());
   app.use(express.static(path.join(__dirname, 'public')));
   app.use('/book', express.static(__dirname + '/public'));
+  app.use('/books', express.static(__dirname + '/public'));
+
   app.use(app.router);
 });
 
