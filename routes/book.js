@@ -141,15 +141,3 @@ exports.sort_name = function(req,res,next){
 		res.render('book_list',data);
 	})
 }
-
-
-exports.sort_price = function(req,res,next){
-	var data = {"data" : ""}
-	
-	db.Books.find({}).sort({ field: 'asc', price: 1 }).populate('userID').exec(function(err,books){
-		// console.log(books);
-		data.data = books;
-		data.auth = req.isAuthenticated();
-		res.render('book_list',data);
-	})
-}
