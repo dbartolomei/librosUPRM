@@ -61,4 +61,4 @@ block content
                   p Email: #{item.user.email}
                   p Phone: #{item.user.phone}
                 .col-md-2.col-sm-offset-1
-                  img.book_thumbnail(src=item.book.thumbnail)  
+                  img.book_thumbnail(src=item.book.thumbnail, onerror='this.onerror = null; this.src="/img/log_fb.png"')  

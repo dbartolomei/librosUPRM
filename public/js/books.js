@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('.add').click(function(){
 		$('.bookInfo').addClass('hide');
 		document.forms["book_add_form"].reset
-		console.log('clicked');	
+		// console.log('clicked');	
 		$('#ISBN').val('');
 		$('#book_add_form').unbind('submit');
 		$('#isbn_progress').css('width','0%');
@@ -23,8 +23,18 @@ $(document).ready(function(){
 				bookdata.description = data.items[0].volumeInfo.description;
 				bookdata.isbn10 = data.items[0].volumeInfo.industryIdentifiers[0].identifier;
 				bookdata.isbn13 = data.items[0].volumeInfo.industryIdentifiers[1].identifier;
-				bookdata.smallthumbnail = data.items[0].volumeInfo.imageLinks.smallThumbnail;
-				bookdata.thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
+				// console.log(data.items[0].volumeInfo.imageLinks);
+				if(typeof data.items[0].volumeInfo.imageLinks !== 'undefined'){
+					bookdata.smallthumbnail = data.items[0].volumeInfo.imageLinks.smallThumbnail;
+					bookdata.thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
+
+				}
+				else{
+					bookdata.smallthumbnail = '/img/logo_fb.png';
+					bookdata.thumbnail = '/img/logo_fb.png';
+				}
+				// bookdata.smallthumbnail = data.items[0].volumeInfo.imageLinks.smallThumbnail;
+				// bookdata.thumbnail = data.items[0].volumeInfo.imageLinks.thumbnail;
 				bookdata.owner_description = owner_description;
 				$('#bookTitle').val(bookdata.title);
 				$('#authors').val(bookdata.authors);
@@ -42,7 +52,7 @@ $(document).ready(function(){
 			bookdata.price  = $('#price').val();
 			bookdata.condition = $('#condition').val();
 			bookdata.owner_description = $('#owner_description').val();
-			console.log(bookdata.owner_description);
+			// console.log(bookdata.owner_description);
 			// console.log(bookdata);
 			$.ajax({
 				url: "/book/new",
@@ -122,7 +132,7 @@ function edValueKeyPress()
     	$("#ISBN").val(value);
         
         var edValue = $("#ISBN").val().length;
-        console.log(edValue);
+        // console.log(edValue);
         var width = edValue*7.7;
         $('#change').text(edValue);
         $('#isbn_progress').css('width',width+'%')

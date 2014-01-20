@@ -10,9 +10,9 @@ exports.account = function(req, res, next){
 			db.Books.find({userID: req.user._id}, function(err, books){
 				var data = {};
 				data.user = user;
-				console.log(user);
+				// console.log(user);
 				data.books = books;
-				console.log(books);
+				// console.log(books);
 				data.auth = true;
 				// console.log(data);
 				res.render('account', data);

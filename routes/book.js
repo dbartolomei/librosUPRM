@@ -5,11 +5,10 @@ var ObjectID = require('mongodb').ObjectID;
 
 // create a new book
 exports.newBook = function(req,res,next){
-	console.log('-----')
+	// console.log('-----')
 	// console.log(req); //pa ver que pasa...
 	if(req.isAuthenticated()){
 		db.Books.findOne({isbn10: req.body.isbn10}, function(err, book){
-
 			if(book === null){
 				aux_save(book);
 			}
@@ -30,8 +29,13 @@ exports.newBook = function(req,res,next){
 					tempTags = tempTags.concat(req.body.title.split(' '));
 					tempTags = tempTags.concat(req.body.authors);
 					
+					// console.log(req.body.owner_description.length > 0);
+
 					if(req.body.owner_description.length > 0 || req.body.owner_description !== null){
 						tempTags = tempTags.concat(req.body.owner_description.split(' '));
+					}
+					else{
+						console.log('empty description');
 					}
 					
 					for(var i = 0; i < req.body.authors.length; i++){
