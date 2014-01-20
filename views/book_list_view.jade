@@ -1,5 +1,5 @@
 each book in data
-        .panel.panel-default.inplace_search_item(id=book._id, title=book.title)
+        .panel.panel-default.inplace_search_item(title=book.title)
           .panel-heading
             h4.panel-title
               a.accordion-toggle(data-toggle='collapse',data-parent="#accordion", href="#"+book._id)
@@ -14,7 +14,9 @@ each book in data
             .panel-body
               .row
                 .col-md-6
-                  h1 #{book.title} 
+                  h1 #{book.title} - 
+                    span.btn.btn-success.disabled $#{book.price}
+
                     //- span.btn.btn-success.disabled $#{book.price}
                   
                   h3 #{book.authors}
@@ -35,7 +37,9 @@ each book in data
 
                   h4 Contact Information
                   p Name: #{book.userID.name}
-                  p Email: #{book.userID.email}
-                  p Phone: #{book.userID.phone}
+                  p Email: 
+                    a(href="mailto:"+book.userID.email) #{book.userID.email}
+                  p Phone: 
+                    a(href="tel:"+book.userID.phone, target="_blank") #{book.userID.phone}
                 .col-md-2.col-sm-offset-1
                   img.book_thumbnail(src=book.thumbnail) 
