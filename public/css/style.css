@@ -171,6 +171,10 @@ td.social_share{
 }
 
 @media only screen and (max-width : 360px){
+	#index_box{
+		margin-left: -10px !important;
+		margin-top: 20px !important;
+	}
 	#index_box h1{
 		font-family: Helvetica;
 		font-weight: bolder;
@@ -178,19 +182,30 @@ td.social_share{
 		color: #156112;
 		margin-bottom: 0px;
 	}
-	#index_form{
-	width: 300px;
-	padding: 0px;
-}
-	#index_form .form-group{
-	width: 260px;
-	position: relative;
-	float: left;
-}
-.loginBTN{
-	width: 100%;
-}
-
+		#index_form{
+		width: 280px;
+		padding: 0px;
+	}
+		#index_form .form-group{
+		width: 230px;
+		position: relative;
+		float: left;
+	}
+	.loginBTN{
+		width: 100%;
+	}
+	.steps{
+		width: 280px !important;
+	}
+	.books_all a{
+		margin-left: 0px !important;
+	}
+	.list_form_inplace{
+		width: 290px;
+	}
+/*	.list_view_container{
+		width: 280px;
+	}*/
 }
 
 

@@ -13,13 +13,14 @@ block head
 block script
 
 block content
+  .list_view_container
     include navbar
-    .container
+    .container.list_view_container
       .btn-group(style='margin-top:20px')
         a.btn.btn-default(href='/books/name') Name
         a.btn.btn-default(href='/books') Date
 
-      form#list_form(style='width:260px;')
+      form#list_form.list_form_inplace
           .form-group
               input#main#srch-term#inplace_search_input.form-control(placeholder='search')
       .panel-group(style='margin-top:34px;')
