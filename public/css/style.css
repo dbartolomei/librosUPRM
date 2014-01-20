@@ -329,14 +329,22 @@ footer li{
 }
 
 .books_all a{
-	color: gray;
-	opacity: 0.8;
-	padding-left: 20px;
+	/*color: gray;*/
+	/*opacity: 0.8;*/
+	margin-left: 26px;
 }
 
 .books_all:hover a{
-	color: gray;
-	opacity: 0.6;
 	text-decoration: none;
-	padding-left: 20px;
+}
+
+a.view_all{
+	display: block;
+	color: white;
+	background: #10743a;
+	width: 280px;
+	height: 46px;
+	line-height: 46px;
+	border-radius: 8px;
+
 }
