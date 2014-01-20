@@ -133,3 +133,21 @@ function edValueKeyPress()
         //var s = $("#edValue").val();
         //$("#lblValue").text(s);    
     }
+
+$(document).ready(function(){
+	$('#inplace_search_input').on('input',function(){
+		var current = $(this).val();
+		$('.inplace_search_item').each(function(){
+			// if($(this).attr('title').indexOf(current) <= 0){
+			if($(this).text().indexOf(current) <= 0){
+				$(this).hide();
+			}
+			else{
+				$(this).show();
+			}
+			if($('#inplace_search_input').val().length == 0){
+				$('.inplace_search_item').show();
+			}
+		})
+	})
+});

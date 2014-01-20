@@ -101,7 +101,6 @@ exports.search = function(req,res,next){ //
 	})
 }
 
-//aggregate.sort({ field: 'asc', test: -1 });
 exports.index = function(req,res,next){
 	var data = {"data" : ""}
 	

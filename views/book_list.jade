@@ -19,10 +19,8 @@ block content
         a.btn.btn-default(href='/books/name') Name
         a.btn.btn-default(href='/books') Date
 
-      form#list_form(role="search", action='/search', method='post', name='search', enctype="multipart/form-data")
+      form#list_form(style='width:260px;')
           .form-group
-              input#main#srch-term.form-control(type='text', placeholder='Search', name='query', required)
-          button.btn.btn-default(type='submit')
-              i.glyphicon.glyphicon-search
+              input#main#srch-term#inplace_search_input.form-control(placeholder='search')
       .panel-group(style='margin-top:34px;')
           include book_list_view
