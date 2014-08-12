@@ -27,20 +27,22 @@ exports.newBook = function(req,res,next){
 					var tempTags = [];
 					tempTags.push(req.body.title);
 					tempTags = tempTags.concat(req.body.title.split(' '));
-					tempTags = tempTags.concat(req.body.authors);
-					
-					// console.log(req.body.owner_description.length > 0);
 
 					if(req.body.owner_description.length > 0 || req.body.owner_description !== null){
 						tempTags = tempTags.concat(req.body.owner_description.split(' '));
 					}
+					
 					else{
 						console.log('empty description');
 					}
 					
-					for(var i = 0; i < req.body.authors.length; i++){
-						tempTags = tempTags.concat(req.body.authors[i].split(' '));
+					if(typeof req.body.authors !== 'undefined' && req.body.authors.length > 0){
+						tempTags = tempTags.concat(req.body.authors);
+						for(var i = 0; i < req.body.authors.length; i++){ // Detectar 
+							tempTags = tempTags.concat(req.body.authors[i].split(' '));
+						}
 					}
+
 					
 					tempTags.push(req.body.isbn10);
 					tempTags.push(req.body.isbn13);
