@@ -197,9 +197,14 @@ td.social_share{
 	.steps{
 		width: 280px !important;
 	}
-	.books_all a{
+	.books_all{
 		margin-left: 0px !important;
+		margin: 0 auto;
+		font-size: 50px !important;
+		text-align: center;
+
 	}
+
 	.list_form_inplace{
 		width: 290px;
 	}
@@ -279,7 +284,7 @@ footer li{
 
 .steps{
 	width: 300px;
-	height: 350px;
+	height: 320px;
 	background: #f3f3f3;
 	background: rgba(255,255,255,0.7);
 	display: block;
@@ -311,10 +316,12 @@ footer li{
 }
 
 .steps .isbn{
-	width: 86%;
+	width: 80%;
 	/*opacity: 0.7;*/
 
 }
+
+
 
 .steps span.accent{
 	font-weight: bolder;
@@ -343,10 +350,10 @@ footer li{
 	margin-top: 50px;
 }
 
-.books_all a{
+.books_all *{
 	/*color: gray;*/
 	/*opacity: 0.8;*/
-	margin-left: 26px;
+	margin: 0 auto;
 }
 
 .books_all:hover a{
@@ -357,9 +364,11 @@ a.view_all{
 	display: block;
 	color: white;
 	background: #10743a;
-	width: 280px;
+	width: 400px;
 	height: 46px;
 	line-height: 46px;
 	border-radius: 8px;
-
+	text-align: center;
+	font-size: 18px;
+	text-transform: uppercase;
 }

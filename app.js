@@ -8,6 +8,8 @@ var path = require('path');
 var passport = require('passport');
 var TwitterStrategy = require('passport-twitter').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').Strategy;
+
 var db = require('./utilities/database');
 var RedisStore = require('connect-redis')(express);
 var redisClient = require('redis').createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
