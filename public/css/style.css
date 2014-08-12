@@ -364,11 +364,31 @@ a.view_all{
 	display: block;
 	color: white;
 	background: #10743a;
-	width: 400px;
+	width: 320px;
 	height: 46px;
 	line-height: 46px;
 	border-radius: 8px;
 	text-align: center;
-	font-size: 18px;
+	font-size: 14px;
 	text-transform: uppercase;
 }
+
+.feedback_action{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	background: #333333;
+	color: #fff;
+	display: block;
+	line-height: 16px;
+	border-radius: 4px;
+	padding: 6px;
+}
+
+.feedback_action:hover{
+	color: #10743a;
+	text-decoration: none;
+	background: #fff;
+	cursor: pointer;
+}
+

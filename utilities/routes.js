@@ -25,6 +25,8 @@ module.exports = function(app,express){
 
 	app.get('/book/:id',book.single_view);
 
+	app.post('/feedback', index.feedback);
+
 	
 	/*TWITTER AUTHENTICATION*/
 	app.get('/auth/twitter', passport.authenticate('twitter'));  //GET Request for twitter auth
