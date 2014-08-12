@@ -19,7 +19,7 @@
     "emailjs": "~0.3.4",
     "jsdom":"0.6.5",
     "connect-ensure-login" : "*",
-    "sendgrid":"*",
+    "sendgrid":"1.2.0",
     "mongoose-text-search":"*",
     "redis":"0.10.0",
     "connect-redis":"1.4.6"
